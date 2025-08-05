@@ -1,287 +1,580 @@
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <title>Zaans Recht</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaans Recht - Eerlijk juridisch advies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'zaans-blue': '#002B5C',
+                    },
+                    fontFamily: {
+                        'sans': ['Open Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="scroll-smooth text-gray-800">
+<body class="font-sans bg-white text-gray-800">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <nav class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <svg class="w-8 h-8 text-zaans-blue" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12,2A1,1 0 0,1 13,3V4.5L19,6.5A1,1 0 0,1 19.5,7.5V8.5A1,1 0 0,1 19,9.5L13,11.5V13H16A1,1 0 0,1 17,14V20A1,1 0 0,1 16,21H8A1,1 0 0,1 7,20V14A1,1 0 0,1 8,13H11V11.5L5,9.5A1,1 0 0,1 4.5,8.5V7.5A1,1 0 0,1 5,6.5L11,4.5V3A1,1 0 0,1 12,2M7,8L12,9.5L17,8L12,6.5L7,8Z"/>
+                </svg>
+                <div class="text-2xl font-bold text-zaans-blue">Zaans Recht</div>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#over" class="text-gray-700 hover:text-zaans-blue transition-colors">Over mij</a>
+                <a href="#diensten" class="text-gray-700 hover:text-zaans-blue transition-colors">Diensten</a>
+                <a href="#contact" class="text-gray-700 hover:text-zaans-blue transition-colors">Contact</a>
+            </div>
+            <button class="md:hidden text-zaans-blue">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+    </header>
 
-  <!-- Navbar -->
-  <nav class="bg-white shadow fixed w-full z-10">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-      <img src="assets/img/logo.png" alt="Zaans Recht" class="h-10">
-      <div class="space-x-6">
-        <a href="#home" class="text-gray-700 hover:text-blue-500">Home</a>
-        <a href="#about" class="text-gray-700 hover:text-blue-500">Over mij</a>
-        <a href="#contact" class="text-gray-700 hover:text-blue-500">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Home Section -->
-<section id="home" class="h-screen flex items-center justify-center bg-gray-100 pt-20 px-6">
-  <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-    <!-- Text Content -->
-    <div>
-      <h1 class="text-4xl md:text-5xl font-semibold text-[#012B5D] leading-tight mb-4">
-        Eerlijk juridisch advies.<br />
-        <span class="font-bold text-[#012B5D]">Zonder drempels.</span>
-      </h1>
-      <p class="text-gray-700 text-lg md:text-xl leading-relaxed mb-6">
-        Bij Zaans Recht krijgt u helder en toegankelijk juridisch advies.
-        Ik help u graag met uw juridische vraagstukken in begrijpelijke taal.
-      </p>
-      <button id="maakAfspraakBtn">Maak een afspraak</button>
-    </div>
-
-    <!-- Image -->
-    <div class="flex justify-center">
-      <img src="assets/img/home_image.jpg" alt="Illustratie juridisch advies" class="max-w-full h-auto rounded-xl shadow-md">
-    </div>
-  </div>
-</section>
-
-  <!-- About Section -->
-<section id="about" class="py-24 bg-white px-6">
-  <div class="max-w-6xl mx-auto">
-    <!-- Centered Heading -->
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-[#012B5D]">Over mij</h2>
-      <div class="w-24 h-1 bg-[#012B5D] mx-auto mt-3 rounded"></div>
-    </div>
-
-    <!-- Content Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      <!-- Tekstgedeelte -->
-      <div>
-        <p class="text-lg md:text-xl text-gray-800 leading-relaxed mb-4">
-          Als ervaren jurist help ik particulieren en ondernemers met hun juridische vraagstukken.
-          Mijn doel is om complexe juridische materie begrijpelijk te maken en praktische oplossingen te bieden.
-        </p>
-        <p class="text-lg md:text-xl text-gray-800 leading-relaxed">
-          Met jarenlange ervaring in verschillende rechtsgebieden, bied ik persoonlijk advies dat aansluit bij uw specifieke situatie en behoeften.
-        </p>
-      </div>
-
-      <!-- Afbeelding -->
-      <div class="flex justify-center">
-        <img src="assets/img/home_image.jpg" alt="Over mij afbeelding" class="w-full max-w-sm rounded-lg shadow-lg">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Services Section -->
-<section id="diensten" class="py-24 bg-gray-100 px-6">
-  <div class="max-w-7xl mx-auto">
-    <!-- Heading -->
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-[#012B5D]">Diensten</h2>
-      <div class="w-24 h-1 bg-[#012B5D] mx-auto mt-3 rounded"></div>
-    </div>
-
-    <!-- 5-Column Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6">
-      <!-- Card 1 -->
-
-      <div class="bg-white rounded-lg p-6 shadow-sm hover:shadow-lg transition-shadow duration-300 text-center">
-        <img src="assets/img/home_image.jpg" alt="Ondernemingsrecht" class="w-20 h-20 rounded-full mx-auto object-cover mt-4">
-        <h3 class="text-lg font-semibold text-[#012B5D] mb-2">Ondernemingsrecht</h3>
-        <p class="text-sm text-gray-700 mb-4">Juridische ondersteuning voor ondernemers, van contracten tot geschillen.</p>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="bg-white rounded-lg p-6 shadow-sm hover:shadow-lg transition-shadow duration-300 text-center">
-        <img src="assets/img/home_image.jpg" alt="Familierecht" class="w-20 h-20 rounded-full mx-auto object-cover mt-4">
-        <h3 class="text-lg font-semibold text-[#012B5D] mb-2">Familierecht</h3>
-        <p class="text-sm text-gray-700 mb-4">Begeleiding bij echtscheiding, alimentatie en omgangsregelingen.</p>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="bg-white rounded-lg p-6 shadow-sm hover:shadow-lg transition-shadow duration-300 text-center">
-        <img src="assets/img/home_image.jpg" alt="Arbeidsrecht" class="w-20 h-20 rounded-full mx-auto object-cover mt-4">
-        <h3 class="text-lg font-semibold text-[#012B5D] mb-2">Arbeidsrecht</h3>
-        <p class="text-sm text-gray-700 mb-4">Advies bij arbeidsconflicten, ontslagen en arbeidsovereenkomsten.</p>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="bg-white rounded-lg p-6 shadow-sm hover:shadow-lg transition-shadow duration-300 text-center">
-        <img src="assets/img/home_image.jpg" alt="Bestuursrecht" class="w-20 h-20 rounded-full mx-auto object-cover mt-4">
-        <h3 class="text-lg font-semibold text-[#012B5D] mb-2">Bestuursrecht</h3>
-        <p class="text-sm text-gray-700 mb-4">Hulp bij geschillen met overheidsinstanties en bestuurlijke procedures.</p>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="bg-white rounded-lg p-6 shadow-sm hover:shadow-lg transition-shadow duration-300 text-center">
-        <img src="assets/img/home_image.jpg" alt="Verbintenissenrecht" class="w-20 h-20 rounded-full mx-auto object-cover mt-4">
-        <h3 class="text-lg font-semibold text-[#012B5D] mb-2">Verbintenissenrecht</h3>
-        <p class="text-sm text-gray-700 mb-4">Contractrecht, aansprakelijkheid en andere verbintenissen tussen partijen.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-  <!-- Contact Section -->
-<div class="min-h-screen bg-gray-50 flex items-center justify-center p-6">
-  <div class="bg-white rounded-xl shadow-md p-8 w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-10">
-
-    <!-- Contact Info -->
-    <div class="space-y-6">
-      <h2 class="text-2xl font-bold text-gray-800">Neem contact op</h2>
-
-      <div class="flex items-start space-x-4">
-        <div class="bg-blue-900 p-3 rounded-full text-white">
-          📧
+    <!-- Hero Section -->
+    <section class="max-w-6xl mx-auto px-6 py-16 md:py-24">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h1 class="text-4xl md:text-5xl font-light text-zaans-blue mb-6 leading-tight">
+                    Eerlijk juridisch advies.<br>
+                    <span class="font-normal">Zonder drempels.</span>
+                </h1>
+                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                    Bij Zaans Recht krijgt u helder en toegankelijk juridisch advies. 
+                    Ik help u graag met uw juridische vraagstukken in begrijpelijke taal.
+                </p>
+                <button onclick="openAppointmentModal()" class="bg-zaans-blue text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-900 transition-colors shadow-lg">
+                    Maak een afspraak
+                </button>
+            </div>
+            <div class="flex justify-center">
+                <!-- Cartoon consultation illustration -->
+                <div class="w-80 h-80 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl flex items-center justify-center relative overflow-hidden">
+                    <!-- Background elements -->
+                    <div class="absolute top-4 right-4 w-16 h-16 bg-blue-200 rounded-full opacity-30"></div>
+                    <div class="absolute bottom-6 left-6 w-12 h-12 bg-blue-300 rounded-full opacity-20"></div>
+                    
+                    <!-- Main illustration -->
+                    <svg class="w-64 h-64" viewBox="0 0 200 200" fill="none">
+                        <!-- Desk -->
+                        <rect x="20" y="140" width="160" height="8" fill="#8B4513" rx="4"/>
+                        <rect x="25" y="148" width="150" height="40" fill="#A0522D" rx="4"/>
+                        
+                        <!-- Lawyer figure -->
+                        <!-- Head -->
+                        <circle cx="80" cy="60" r="18" fill="#FDBCB4"/>
+                        <!-- Hair -->
+                        <path d="M62 50 Q80 35 98 50 Q95 45 80 45 Q65 45 62 50" fill="#8B4513"/>
+                        <!-- Eyes -->
+                        <circle cx="75" cy="58" r="2" fill="#000"/>
+                        <circle cx="85" cy="58" r="2" fill="#000"/>
+                        <!-- Smile -->
+                        <path d="M75 65 Q80 70 85 65" stroke="#000" stroke-width="1.5" fill="none"/>
+                        
+                        <!-- Body -->
+                        <rect x="65" y="78" width="30" height="45" fill="#002B5C" rx="15"/>
+                        <!-- Arms -->
+                        <rect x="50" y="85" width="12" height="25" fill="#002B5C" rx="6"/>
+                        <rect x="98" y="85" width="12" height="25" fill="#002B5C" rx="6"/>
+                        <!-- Hands -->
+                        <circle cx="56" cy="115" r="5" fill="#FDBCB4"/>
+                        <circle cx="104" cy="115" r="5" fill="#FDBCB4"/>
+                        
+                        <!-- Client figure -->
+                        <!-- Head -->
+                        <circle cx="130" cy="65" r="16" fill="#F4C2A1"/>
+                        <!-- Hair -->
+                        <path d="M115 55 Q130 42 145 55 Q142 50 130 50 Q118 50 115 55" fill="#4A4A4A"/>
+                        <!-- Eyes -->
+                        <circle cx="126" cy="63" r="2" fill="#000"/>
+                        <circle cx="134" cy="63" r="2" fill="#000"/>
+                        <!-- Smile -->
+                        <path d="M126 70 Q130 74 134 70" stroke="#000" stroke-width="1.5" fill="none"/>
+                        
+                        <!-- Body -->
+                        <rect x="118" y="81" width="24" height="40" fill="#4A90E2" rx="12"/>
+                        <!-- Arms -->
+                        <rect x="108" y="88" width="10" height="20" fill="#4A90E2" rx="5"/>
+                        <rect x="142" y="88" width="10" height="20" fill="#4A90E2" rx="5"/>
+                        <!-- Hands -->
+                        <circle cx="113" cy="113" r="4" fill="#F4C2A1"/>
+                        <circle cx="147" cy="113" r="4" fill="#F4C2A1"/>
+                        
+                        <!-- Documents on desk -->
+                        <rect x="40" y="125" width="20" height="15" fill="#FFF" stroke="#DDD" stroke-width="1"/>
+                        <rect x="65" y="130" width="15" height="10" fill="#FFF" stroke="#DDD" stroke-width="1"/>
+                        
+                        <!-- Speech bubbles -->
+                        <ellipse cx="90" cy="35" rx="25" ry="12" fill="#FFF" stroke="#DDD" stroke-width="1"/>
+                        <path d="M75 45 L80 50 L85 45" fill="#FFF"/>
+                        <text x="90" y="40" text-anchor="middle" font-size="8" fill="#002B5C">Juridisch advies</text>
+                        
+                        <!-- Scales of justice icon -->
+                        <g transform="translate(150, 25)">
+                            <rect x="0" y="0" width="2" height="20" fill="#FFD700"/>
+                            <circle cx="1" cy="0" r="3" fill="#FFD700"/>
+                            <path d="M-8 8 L-3 8 L-5.5 15 Z" fill="#FFD700"/>
+                            <path d="M5 8 L10 8 L7.5 15 Z" fill="#FFD700"/>
+                            <line x1="-5.5" y1="8" x2="1" y2="5" stroke="#FFD700" stroke-width="1"/>
+                            <line x1="7.5" y1="8" x2="1" y2="5" stroke="#FFD700" stroke-width="1"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
         </div>
-        <div>
-          <h3 class="text-lg font-semibold text-blue-900">E-mail</h3>
-          <p>info@zaansrecht.nl</p>
-        </div>
-      </div>
+    </section>
 
-      <div class="flex items-start space-x-4">
-        <div class="bg-blue-900 p-3 rounded-full text-white">
-          ☎️
+    <!-- Over mij Section -->
+    <section id="over" class="bg-gray-50 py-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-light text-zaans-blue mb-4">Over mij</h2>
+                <div class="w-16 h-1 bg-zaans-blue mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        Als ervaren jurist help ik particulieren en ondernemers met hun juridische vraagstukken. 
+                        Mijn doel is om complexe juridische materie begrijpelijk te maken en praktische oplossingen te bieden.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Met jarenlange ervaring in verschillende rechtsgebieden, bied ik persoonlijk advies 
+                        dat aansluit bij uw specifieke situatie en behoeften.
+                    </p>
+                </div>
+                <div class="flex justify-center">
+                    <!-- Professional consultation scene -->
+                    <div class="w-72 h-72 bg-white rounded-2xl shadow-lg flex items-center justify-center">
+                        <svg class="w-40 h-40 text-zaans-blue" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-          <h3 class="text-lg font-semibold text-blue-900">Telefoon</h3>
-          <p>075 - 123 4567</p>
-        </div>
-      </div>
+    </section>
 
-      <div class="flex items-start space-x-4">
-        <div class="bg-blue-900 p-3 rounded-full text-white">
-          📍
+    <!-- Diensten Section -->
+    <section id="diensten" class="py-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-light text-zaans-blue mb-4">Diensten</h2>
+                <div class="w-16 h-1 bg-zaans-blue mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-zaans-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12,3L1,9L12,15L21,9V16H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-zaans-blue mb-3">Ondernemingsrecht</h3>
+                    <p class="text-gray-600">Juridische ondersteuning voor ondernemers, van contracten tot geschillen.</p>
+                </div>
+                <div class="text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-zaans-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12,3L2,12H5V20H19V12H22L12,3M12,8.75A2.25,2.25 0 0,1 14.25,11A2.25,2.25 0 0,1 12,13.25A2.25,2.25 0 0,1 9.75,11A2.25,2.25 0 0,1 12,8.75M12,15C13.5,15 16.5,15.75 16.5,17.25V18H7.5V17.25C7.5,15.75 10.5,15 12,15Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-zaans-blue mb-3">Familierecht</h3>
+                    <p class="text-gray-600">Begeleiding bij echtscheiding, alimentatie en omgangsregelingen.</p>
+                </div>
+                <div class="text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-zaans-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M10,2H14A2,2 0 0,1 16,4V6H20A2,2 0 0,1 22,8V19A2,2 0 0,1 20,21H4A2,2 0 0,1 2,19V8A2,2 0 0,1 4,6H8V4A2,2 0 0,1 10,2M14,6V4H10V6H14Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-zaans-blue mb-3">Arbeidsrecht</h3>
+                    <p class="text-gray-600">Advies bij arbeidsconflicten, ontslagen en arbeidsovereenkomsten.</p>
+                </div>
+                <div class="text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-zaans-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11.5C14.8,12.6 13.9,13.5 12.8,13.5H11.2C10.1,13.5 9.2,12.6 9.2,11.5V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V11.3H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-zaans-blue mb-3">Bestuursrecht</h3>
+                    <p class="text-gray-600">Hulp bij geschillen met overheidsinstanties en bestuurlijke procedures.</p>
+                </div>
+                <div class="text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-zaans-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M9,13V19H7V13H9M12,10V19H10V10H12M15,16V19H13V16H15Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-zaans-blue mb-3">Verbintenissenrecht</h3>
+                    <p class="text-gray-600">Contractrecht, aansprakelijkheid en andere verbintenissen tussen partijen.</p>
+                </div>
+            </div>
         </div>
-        <div>
-          <h3 class="text-lg font-semibold text-blue-900">Locatie</h3>
-          <p>Zaandam, Noord-Holland</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-gray-50 py-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-light text-zaans-blue mb-4">Contact</h2>
+                <div class="w-16 h-1 bg-zaans-blue mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-xl font-semibold text-zaans-blue mb-6">Neem contact op</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-zaans-blue rounded-full flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-zaans-blue">E-mail</p>
+                                <p class="text-gray-600">info@zaansrecht.nl</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-zaans-blue rounded-full flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-zaans-blue">Telefoon</p>
+                                <p class="text-gray-600">075 - 123 4567</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-zaans-blue rounded-full flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-zaans-blue">Locatie</p>
+                                <p class="text-gray-600">Zaandam, Noord-Holland</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold text-zaans-blue mb-6">Stuur een bericht</h3>
+                    <form id="contactForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Naam *</label>
+                            <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Uw naam">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">E-mail *</label>
+                            <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="uw.email@voorbeeld.nl">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Telefoon</label>
+                            <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="06-12345678 (optioneel)">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Onderwerp *</label>
+                            <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent">
+                                <option value="">Selecteer een onderwerp</option>
+                                <option value="algemene-vraag">Algemene vraag</option>
+                                <option value="juridisch-advies">Juridisch advies</option>
+                                <option value="afspraak-maken">Afspraak maken</option>
+                                <option value="offerte-aanvragen">Offerte aanvragen</option>
+                                <option value="klacht">Klacht</option>
+                                <option value="overig">Overig</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Bericht *</label>
+                            <textarea required rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Uw bericht..."></textarea>
+                        </div>
+                        <div class="flex items-start">
+                            <input type="checkbox" required class="mt-1 mr-3 text-zaans-blue">
+                            <label class="text-sm text-gray-600">
+                                Ik ga akkoord met de <a href="#" class="text-zaans-blue hover:underline">privacyverklaring</a> en geef toestemming voor het verwerken van mijn gegevens. *
+                            </label>
+                        </div>
+                        <button type="submit" class="w-full bg-zaans-blue text-white py-3 rounded-lg font-semibold hover:bg-blue-900 transition-colors">
+                            Verstuur bericht
+                        </button>
+                    </form>
+                    <div id="contactFormSuccess" class="hidden mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Bedankt! Uw bericht is verzonden. We nemen binnen 24 uur contact met u op.
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <!-- Appointment Modal -->
+    <div id="appointmentModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-2xl font-semibold text-zaans-blue">Afspraak inplannen</h2>
+                    <button onclick="closeAppointmentModal()" class="text-gray-400 hover:text-gray-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="p-6">
+                <form id="appointmentForm" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Voornaam *</label>
+                            <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Uw voornaam">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Achternaam *</label>
+                            <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Uw achternaam">
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">E-mail *</label>
+                            <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="uw.email@voorbeeld.nl">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Telefoon *</label>
+                            <input type="tel" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="06-12345678">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Rechtsgebied *</label>
+                        <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent">
+                            <option value="">Selecteer een rechtsgebied</option>
+                            <option value="ondernemingsrecht">Ondernemingsrecht</option>
+                            <option value="familierecht">Familierecht</option>
+                            <option value="arbeidsrecht">Arbeidsrecht</option>
+                            <option value="bestuursrecht">Bestuursrecht</option>
+                            <option value="verbintenissenrecht">Verbintenissenrecht</option>
+                            <option value="overig">Overig</option>
+                        </select>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Gewenste datum *</label>
+                            <input type="date" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" min="">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Gewenste tijd *</label>
+                            <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent">
+                                <option value="">Selecteer een tijd</option>
+                                <option value="09:00">09:00</option>
+                                <option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option>
+                                <option value="13:00">13:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Type afspraak *</label>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="appointmentType" value="kantoor" required class="mr-3 text-zaans-blue">
+                                <div>
+                                    <div class="font-medium">Kantoorbezoek</div>
+                                    <div class="text-sm text-gray-600">Persoonlijk gesprek op kantoor</div>
+                                </div>
+                            </label>
+                            <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="appointmentType" value="videobellen" required class="mr-3 text-zaans-blue">
+                                <div>
+                                    <div class="font-medium">Videobellen</div>
+                                    <div class="text-sm text-gray-600">Online gesprek via video</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Korte omschrijving van uw vraag *</label>
+                        <textarea required rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Beschrijf kort waar u hulp bij nodig heeft..."></textarea>
+                    </div>
+                    <div class="flex justify-end space-x-4">
+                        <button type="button" onclick="closeAppointmentModal()" class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+                            Annuleren
+                        </button>
+                        <button type="submit" class="px-6 py-3 bg-zaans-blue text-white rounded-lg hover:bg-blue-900 transition-colors">
+                            Afspraak aanvragen
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
-    <!-- Contact Form -->
-    <form class="space-y-5">
-      <h2 class="text-2xl font-bold text-blue-900">Stuur een bericht</h2>
+    <!-- Footer -->
+    <footer class="bg-zaans-blue text-white py-8">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <div class="text-xl font-bold mb-2">Zaans Recht</div>
+            <p class="text-blue-200">Eerlijk juridisch advies. Zonder drempels.</p>
+            <div class="mt-4 text-sm text-blue-200">
+                © 2024 Zaans Recht. Alle rechten voorbehouden.
+            </div>
+        </div>
+    </footer>
 
-      <div>
-        <label class="block text-sm font-medium text-gray-700">Naam *</label>
-        <input type="text" class="mt-1 w-full p-3 border border-gray-300 rounded-md" placeholder="Uw naam" required />
-      </div>
+    <script>
+        // Set minimum date to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.querySelector('input[type="date"]');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.setAttribute('min', today);
+            }
+        });
 
-      <div>
-        <label class="block text-sm font-medium text-gray-700">E-mail *</label>
-        <input type="email" class="mt-1 w-full p-3 border border-gray-300 rounded-md" placeholder="uw.email@voorbeeld.nl" required />
-      </div>
+        // Appointment Modal Functions
+        function openAppointmentModal() {
+            document.getElementById('appointmentModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
 
-      <div>
-        <label class="block text-sm font-medium text-gray-700">Telefoon</label>
-        <input type="tel" class="mt-1 w-full p-3 border border-gray-300 rounded-md" placeholder="06-12345678 (optioneel)" />
-      </div>
+        function closeAppointmentModal() {
+            document.getElementById('appointmentModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            document.getElementById('appointmentForm').reset();
+        }
 
-      <div>
-        <label class="block text-sm font-medium text-gray-700">Onderwerp *</label>
-        <select class="mt-1 w-full p-3 border border-gray-300 rounded-md" required>
-          <option value="">Selecteer een onderwerp</option>
-          <option value="algemeen">Algemene vraag</option>
-          <option value="juridisch">Juridisch advies</option>
-        </select>
-      </div>
+        // Close modal when clicking outside
+        document.getElementById('appointmentModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeAppointmentModal();
+            }
+        });
 
-      <div>
-        <label class="block text-sm font-medium text-gray-700">Bericht *</label>
-        <textarea class="mt-1 w-full p-3 border border-gray-300 rounded-md" rows="4" placeholder="Uw bericht..." required></textarea>
-      </div>
+        // Appointment Form Submission
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const appointmentData = {
+                firstName: formData.get('firstName') || this.querySelector('input[placeholder="Uw voornaam"]').value,
+                lastName: formData.get('lastName') || this.querySelector('input[placeholder="Uw achternaam"]').value,
+                email: this.querySelector('input[type="email"]').value,
+                phone: this.querySelector('input[type="tel"]').value,
+                legalArea: this.querySelector('select').value,
+                date: this.querySelector('input[type="date"]').value,
+                time: this.querySelectorAll('select')[1].value,
+                type: this.querySelector('input[name="appointmentType"]:checked').value,
+                description: this.querySelector('textarea').value
+            };
 
-      <div class="flex items-start space-x-2">
-        <input type="checkbox" required />
-        <label class="text-sm text-gray-600">
-          Ik ga akkoord met de
-          <a href="#" class="text-blue-600 underline">privacyverklaring</a>
-          en geef toestemming voor het verwerken van mijn gegevens. *
-        </label>
-      </div>
+            // Simulate sending appointment request
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Bezig met verzenden...';
+            submitButton.disabled = true;
 
-      <button type="submit" class="bg-blue-900 text-white py-3 px-6 rounded-md w-full font-semibold">
-        Verstuur bericht
-      </button>
-    </form>
-  </div>
-</div>
+            setTimeout(() => {
+                alert(`Afspraak aangevraagd!\n\nDetails:\n- Naam: ${appointmentData.firstName} ${appointmentData.lastName}\n- Datum: ${appointmentData.date} om ${appointmentData.time}\n- Type: ${appointmentData.type === 'kantoor' ? 'Kantoorbezoek' : 'Videobellen'}\n- Rechtsgebied: ${appointmentData.legalArea}\n\nU ontvangt binnen 24 uur een bevestiging per e-mail.`);
+                
+                closeAppointmentModal();
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }, 1500);
+        });
 
-<!-- Appointment Modal -->
-<div id="appointmentModal" class="modal">
-  <div class="modal-content">
-    <span class="close-button">&times;</span>
-    <h2>Afspraak inplannen</h2>
-    <form class="form-grid">
-      <div class="form-row">
-        <input type="text" placeholder="Uw voornaam *" required />
-        <input type="text" placeholder="Uw achternaam *" required />
-      </div>
-      <div class="form-row">
-        <input type="email" placeholder="uw.email@voorbeeld.nl *" required />
-        <input type="tel" placeholder="06-12345678 *" required />
-      </div>
-      <div class="form-row">
-        <select required>
-          <option disabled selected>Selecteer een rechtsgebied *</option>
-          <option>Ondernemingsrecht</option>
-          <option>Familierecht</option>
-          <option>Arbeidsrecht</option>
-          <option>Bestuursrecht</option>
-          <option>Verbintenissenrecht</option>
-        </select>
-        <select required>
-          <option disabled selected>Selecteer een tijd *</option>
-          <option>09:00</option>
-          <option>10:00</option>
-          <option>11:00</option>
-          <!-- Add more times -->
-        </select>
-      </div>
-      <div class="form-row">
-        <input type="date" required />
-      </div>
-      <div class="form-row appointment-type">
-        <label><input type="radio" name="type" required /> Kantoorbezoek<br><small>Persoonlijk gesprek op kantoor</small></label>
-        <label><input type="radio" name="type" required /> Videobellen<br><small>Online gesprek via video</small></label>
-      </div>
-      <textarea placeholder="Beschrijf kort waar u hulp bij nodig heeft..." required></textarea>
-      <div class="form-actions">
-        <button type="button" class="cancel-button">Annuleren</button>
-        <button type="submit" class="submit-button">Afspraak aanvragen</button>
-      </div>
-    </form>
-  </div>
-</div>
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: this.querySelector('input[type="text"]').value,
+                email: this.querySelector('input[type="email"]').value,
+                phone: this.querySelector('input[type="tel"]').value,
+                subject: this.querySelector('select').value,
+                message: this.querySelector('textarea').value
+            };
 
-</body>
-  <script>
-  // Open modal
-  document.getElementById("maakAfspraakBtn").addEventListener("click", function () {
-    document.getElementById("appointmentModal").style.display = "block";
-  });
+            // Simulate sending contact form
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Bezig met verzenden...';
+            submitButton.disabled = true;
 
-  // Close modal on X or cancel
-  document.querySelector(".close-button").onclick = function () {
-    document.getElementById("appointmentModal").style.display = "none";
-  };
+            setTimeout(() => {
+                this.style.display = 'none';
+                document.getElementById('contactFormSuccess').classList.remove('hidden');
+                
+                // Reset form after 5 seconds
+                setTimeout(() => {
+                    this.reset();
+                    this.style.display = 'block';
+                    document.getElementById('contactFormSuccess').classList.add('hidden');
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                }, 5000);
+            }, 1500);
+        });
 
-  document.querySelector(".cancel-button").onclick = function () {
-    document.getElementById("appointmentModal").style.display = "none";
-  };
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-  // Close if clicked outside the modal
-  window.onclick = function (event) {
-    if (event.target === document.getElementById("appointmentModal")) {
-      document.getElementById("appointmentModal").style.display = "none";
-    }
-  };
-</script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('button.md\\:hidden');
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', function() {
+                alert('Mobiele menu functionaliteit - klik op de navigatie links bovenaan voor desktop versie');
+            });
+        }
 
+        // Form validation enhancements
+        document.querySelectorAll('input[required], select[required], textarea[required]').forEach(field => {
+            field.addEventListener('invalid', function(e) {
+                e.preventDefault();
+                this.classList.add('border-red-500');
+                
+                // Remove error styling when user starts typing
+                this.addEventListener('input', function() {
+                    this.classList.remove('border-red-500');
+                }, { once: true });
+            });
+        });
+
+        // Escape key to close modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeAppointmentModal();
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96a49faac2a4ae1c',t:'MTc1NDM3OTM4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

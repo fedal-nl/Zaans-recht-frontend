@@ -1,3 +1,6 @@
 name: Zaans-recht-frontend
 region: us-east-1
 yamlVersion: 2
+frontend:
+  type: static
+  path: .

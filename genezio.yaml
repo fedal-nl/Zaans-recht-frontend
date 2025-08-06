@@ -4,3 +4,4 @@ yamlVersion: 2
 frontend:
   type: static
   path: .
+  publish: .

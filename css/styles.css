@@ -97,3 +97,17 @@ textarea {
   padding: 10px 20px;
   border-radius: 5px;
 }
+
+/* Admin Panel Styles */
+.admin-tab.active {
+  border-color: #002b5c;
+  color: #002b5c;
+}
+
+.admin-section {
+  display: block;
+}
+
+.admin-section.hidden {
+  display: none;
+}

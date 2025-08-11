@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Zaans Recht</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'zaans-blue': '#002B5C',
+                    },
+                    fontFamily: {
+                        'sans': ['Open Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <nav class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <svg class="w-8 h-8 text-zaans-blue" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12,2A1,1 0 0,1 13,3V4.5L19,6.5A1,1 0 0,1 19.5,7.5V8.5A1,1 0 0,1 19,9.5L13,11.5V13H16A1,1 0 0,1 17,14V20A1,1 0 0,1 16,21H8A1,1 0 0,1 7,20V14A1,1 0 0,1 8,13H11V11.5L5,9.5A1,1 0 0,1 4.5,8.5V7.5A1,1 0 0,1 5,6.5L11,4.5V3A1,1 0 0,1 12,2M7,8L12,9.5L17,8L12,6.5L7,8Z"/>
+                </svg>
+                <div class="text-2xl font-bold text-zaans-blue">Zaans Recht Admin</div>
+            </div>
+            <div class="flex space-x-4">
+                <a href="index.html" class="text-gray-700 hover:text-zaans-blue transition-colors">Terug naar website</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Admin Dashboard -->
+    <div class="max-w-6xl mx-auto px-6 py-8">
+        <!-- Navigation Tabs -->
+        <div class="bg-white rounded-lg shadow-sm mb-6">
+            <div class="border-b border-gray-200">
+                <nav class="flex space-x-8 px-6">
+                    <button onclick="showSection('cases')" id="cases-tab" class="admin-tab active py-4 px-2 border-b-2 border-zaans-blue text-zaans-blue font-medium">
+                        Zaken
+                    </button>
+                    <button onclick="showSection('clients')" id="clients-tab" class="admin-tab py-4 px-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                        Cliënten
+                    </button>
+                    <button onclick="showSection('appointments')" id="appointments-tab" class="admin-tab py-4 px-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                        Afspraken
+                    </button>
+                    <button onclick="showSection('documents')" id="documents-tab" class="admin-tab py-4 px-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                        Documenten
+                    </button>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Cases Section -->
+        <div id="cases-section" class="admin-section">
+            <div class="bg-white rounded-lg shadow-sm">
+                <div class="p-6 border-b border-gray-200">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xl font-semibold text-gray-900">Zaken beheren</h2>
+                        <button onclick="showCaseForm()" class="bg-zaans-blue text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors">
+                            Nieuwe zaak toevoegen
+                        </button>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div id="cases-list">
+                        <!-- Cases will be dynamically loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clients Section -->
+        <div id="clients-section" class="admin-section hidden">
+            <div class="bg-white rounded-lg shadow-sm">
+                <div class="p-6 border-b border-gray-200">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xl font-semibold text-gray-900">Cliënten beheren</h2>
+                        <button onclick="showClientForm()" class="bg-zaans-blue text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors">
+                            Nieuwe cliënt toevoegen
+                        </button>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div id="clients-list">
+                        <!-- Clients will be dynamically loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Appointments Section -->
+        <div id="appointments-section" class="admin-section hidden">
+            <div class="bg-white rounded-lg shadow-sm">
+                <div class="p-6 border-b border-gray-200">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xl font-semibold text-gray-900">Afspraken beheren</h2>
+                        <button onclick="showAppointmentForm()" class="bg-zaans-blue text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors">
+                            Nieuwe afspraak toevoegen
+                        </button>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div id="appointments-list">
+                        <!-- Appointments will be dynamically loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Documents Section -->
+        <div id="documents-section" class="admin-section hidden">
+            <div class="bg-white rounded-lg shadow-sm">
+                <div class="p-6 border-b border-gray-200">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xl font-semibold text-gray-900">Documenten beheren</h2>
+                        <button onclick="showDocumentForm()" class="bg-zaans-blue text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors">
+                            Nieuw document toevoegen
+                        </button>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div id="documents-list">
+                        <!-- Documents will be dynamically loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Forms -->
+    <div id="admin-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex justify-between items-center">
+                    <h2 id="modal-title" class="text-2xl font-semibold text-zaans-blue"></h2>
+                    <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="modal-content" class="p-6">
+                <!-- Form content will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

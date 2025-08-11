@@ -1,5 +1,19 @@
 {
+  "type": "module",
   "dependencies": {
     "genezio": "^3.2.10"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.12"
+  },
+  "scripts": {
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest",
+    "test:watch": "NODE_OPTIONS='--experimental-vm-modules' jest --watch",
+    "test:coverage": "NODE_OPTIONS='--experimental-vm-modules' jest --coverage"
+  },
+  "jest": {
+    "testMatch": ["**/__tests__/**/*.test.js"],
+    "testEnvironment": "node"
   }
 }

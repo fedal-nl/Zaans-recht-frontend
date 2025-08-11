@@ -1,0 +1,6 @@
+services:
+  zaans-recht-cli:
+    build: .
+    stdin_open: true
+    tty: true
+    container_name: zaans-recht-cli

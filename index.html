@@ -36,6 +36,7 @@
             <div class="hidden md:flex space-x-8">
                 <a href="#over" class="text-gray-700 hover:text-zaans-blue transition-colors">Over mij</a>
                 <a href="#diensten" class="text-gray-700 hover:text-zaans-blue transition-colors">Diensten</a>
+                <a href="#quiz" class="text-gray-700 hover:text-zaans-blue transition-colors">Quiz</a>
                 <a href="#contact" class="text-gray-700 hover:text-zaans-blue transition-colors">Contact</a>
             </div>
             <button class="md:hidden text-zaans-blue">
@@ -156,6 +157,82 @@
                     </div>
                     <h3 class="text-xl font-semibold text-zaans-blue mb-3">Verbintenissenrecht</h3>
                     <p class="text-gray-600">Contractrecht, aansprakelijkheid en andere verbintenissen tussen partijen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="bg-gray-50 py-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-light text-zaans-blue mb-4">Juridische Quiz</h2>
+                <div class="w-16 h-1 bg-zaans-blue mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Test uw juridische kennis met onze interactieve quiz. Ontdek hoe goed u bent geïnformeerd over verschillende rechtsgebieden.
+                </p>
+            </div>
+            
+            <!-- Quiz Menu -->
+            <div id="quizMenu" class="max-w-2xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <button onclick="startQuiz()" class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow group">
+                        <div class="w-16 h-16 bg-zaans-blue rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-900 transition-colors">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M13,7H11V11H7V13H11V17H13V13H17V11H13V7Z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-zaans-blue mb-3">Start Quiz</h3>
+                        <p class="text-gray-600">Begin een nieuwe juridische quiz en test uw kennis</p>
+                    </button>
+                    
+                    <button onclick="viewQuizResults()" class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow group">
+                        <div class="w-16 h-16 bg-zaans-blue rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-900 transition-colors">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M16,12A2,2 0 0,1 18,10A2,2 0 0,1 20,12A2,2 0 0,1 18,14A2,2 0 0,1 16,12M10,12A2,2 0 0,1 12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12M4,12A2,2 0 0,1 6,10A2,2 0 0,1 8,12A2,2 0 0,1 6,14A2,2 0 0,1 4,12Z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-zaans-blue mb-3">Bekijk Resultaten</h3>
+                        <p class="text-gray-600">Bekijk uw vorige quiz resultaten en voortgang</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Container (hidden by default) -->
+            <div id="quizContainer" class="hidden max-w-4xl mx-auto">
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-semibold text-zaans-blue">Juridische Quiz</h3>
+                        <button onclick="backToQuizMenu()" class="text-gray-500 hover:text-gray-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Quiz Content -->
+                    <div id="quizContent">
+                        <!-- This will be populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Results Container (hidden by default) -->
+            <div id="quizResultsContainer" class="hidden max-w-4xl mx-auto">
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-semibold text-zaans-blue">Quiz Resultaten</h3>
+                        <button onclick="backToQuizMenu()" class="text-gray-500 hover:text-gray-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Results Content -->
+                    <div id="resultsContent">
+                        <!-- This will be populated dynamically -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -510,6 +587,393 @@
                 closeAppointmentModal();
             }
         });
+
+        // Quiz API Configuration
+        const QUIZ_API_BASE_URL = 'https://api.zaansrecht.nl'; // This should be configured to actual API endpoint
+        
+        // Quiz functionality
+        function startQuiz() {
+            showQuizContainer();
+            loadQuizQuestions();
+        }
+
+        function viewQuizResults() {
+            showResultsContainer();
+            loadQuizResults();
+        }
+
+        function backToQuizMenu() {
+            document.getElementById('quizMenu').classList.remove('hidden');
+            document.getElementById('quizContainer').classList.add('hidden');
+            document.getElementById('quizResultsContainer').classList.add('hidden');
+        }
+
+        function showQuizContainer() {
+            document.getElementById('quizMenu').classList.add('hidden');
+            document.getElementById('quizContainer').classList.remove('hidden');
+            document.getElementById('quizResultsContainer').classList.add('hidden');
+        }
+
+        function showResultsContainer() {
+            document.getElementById('quizMenu').classList.add('hidden');
+            document.getElementById('quizContainer').classList.add('hidden');
+            document.getElementById('quizResultsContainer').classList.remove('hidden');
+        }
+
+        async function loadQuizQuestions() {
+            const quizContent = document.getElementById('quizContent');
+            
+            // Show loading state
+            quizContent.innerHTML = `
+                <div class="text-center py-8">
+                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-zaans-blue mx-auto mb-4"></div>
+                    <p class="text-gray-600">Quiz vragen laden...</p>
+                </div>
+            `;
+
+            try {
+                // Mock API call - replace with actual API endpoint
+                const response = await fetch(`${QUIZ_API_BASE_URL}/quiz/questions`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error('API niet beschikbaar');
+                }
+
+                const questions = await response.json();
+                displayQuizQuestions(questions);
+            } catch (error) {
+                console.log('API call failed, using mock data:', error);
+                // Fallback to mock data for demonstration
+                const mockQuestions = [
+                    {
+                        id: 1,
+                        question: "Wat is de maximum proeftijd voor een arbeidsovereenkomst?",
+                        options: ["1 maand", "2 maanden", "3 maanden", "6 maanden"],
+                        correctAnswer: 1
+                    },
+                    {
+                        id: 2,
+                        question: "Binnen hoeveel tijd moet een werkgever ontslag melden bij UWV?",
+                        options: ["1 week", "2 weken", "1 maand", "Direct"],
+                        correctAnswer: 2
+                    },
+                    {
+                        id: 3,
+                        question: "Wat is de opzegtermijn bij een contract voor onbepaalde tijd (minder dan 5 jaar dienstverband)?",
+                        options: ["2 weken", "1 maand", "2 maanden", "3 maanden"],
+                        correctAnswer: 1
+                    }
+                ];
+                
+                setTimeout(() => {
+                    displayQuizQuestions(mockQuestions);
+                }, 1000);
+            }
+        }
+
+        function displayQuizQuestions(questions) {
+            const quizContent = document.getElementById('quizContent');
+            let currentQuestion = 0;
+            let userAnswers = [];
+
+            function showQuestion(index) {
+                const question = questions[index];
+                quizContent.innerHTML = `
+                    <div class="quiz-question">
+                        <div class="mb-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-sm text-gray-500">Vraag ${index + 1} van ${questions.length}</span>
+                                <div class="bg-gray-200 rounded-full h-2 w-32">
+                                    <div class="bg-zaans-blue h-2 rounded-full" style="width: ${((index + 1) / questions.length) * 100}%"></div>
+                                </div>
+                            </div>
+                            <h4 class="text-xl font-semibold text-gray-800 mb-6">${question.question}</h4>
+                        </div>
+                        
+                        <div class="space-y-3 mb-8">
+                            ${question.options.map((option, optionIndex) => `
+                                <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+                                    <input type="radio" name="question${question.id}" value="${optionIndex}" class="mr-3 text-zaans-blue">
+                                    <span class="text-gray-700">${option}</span>
+                                </label>
+                            `).join('')}
+                        </div>
+
+                        <div class="flex justify-between">
+                            <button onclick="previousQuestion()" ${index === 0 ? 'disabled' : ''} 
+                                class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                                Vorige
+                            </button>
+                            <button onclick="${index === questions.length - 1 ? 'finishQuiz()' : 'nextQuestion()'}" 
+                                class="px-6 py-3 bg-zaans-blue text-white rounded-lg hover:bg-blue-900 transition-colors">
+                                ${index === questions.length - 1 ? 'Quiz Voltooien' : 'Volgende'}
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            window.nextQuestion = function() {
+                const selectedAnswer = document.querySelector(`input[name="question${questions[currentQuestion].id}"]:checked`);
+                if (selectedAnswer) {
+                    userAnswers[currentQuestion] = parseInt(selectedAnswer.value);
+                    currentQuestion++;
+                    if (currentQuestion < questions.length) {
+                        showQuestion(currentQuestion);
+                    }
+                } else {
+                    alert('Selecteer een antwoord voordat u doorgaat.');
+                }
+            };
+
+            window.previousQuestion = function() {
+                if (currentQuestion > 0) {
+                    currentQuestion--;
+                    showQuestion(currentQuestion);
+                }
+            };
+
+            window.finishQuiz = function() {
+                const selectedAnswer = document.querySelector(`input[name="question${questions[currentQuestion].id}"]:checked`);
+                if (selectedAnswer) {
+                    userAnswers[currentQuestion] = parseInt(selectedAnswer.value);
+                    submitQuizResults(questions, userAnswers);
+                } else {
+                    alert('Selecteer een antwoord voordat u de quiz voltooit.');
+                }
+            };
+
+            // Show first question
+            showQuestion(0);
+        }
+
+        async function submitQuizResults(questions, userAnswers) {
+            const quizContent = document.getElementById('quizContent');
+            
+            // Calculate score
+            let correctAnswers = 0;
+            questions.forEach((question, index) => {
+                if (userAnswers[index] === question.correctAnswer) {
+                    correctAnswers++;
+                }
+            });
+
+            const score = Math.round((correctAnswers / questions.length) * 100);
+            const quizResult = {
+                questions: questions,
+                userAnswers: userAnswers,
+                score: score,
+                correctAnswers: correctAnswers,
+                totalQuestions: questions.length,
+                completedAt: new Date().toISOString()
+            };
+
+            // Show loading
+            quizContent.innerHTML = `
+                <div class="text-center py-8">
+                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-zaans-blue mx-auto mb-4"></div>
+                    <p class="text-gray-600">Resultaten opslaan...</p>
+                </div>
+            `;
+
+            try {
+                // Try to submit to API
+                const response = await fetch(`${QUIZ_API_BASE_URL}/quiz/results`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(quizResult)
+                });
+
+                if (!response.ok) {
+                    throw new Error('API niet beschikbaar');
+                }
+
+                // Save to localStorage as backup
+                const existingResults = JSON.parse(localStorage.getItem('quizResults') || '[]');
+                existingResults.push(quizResult);
+                localStorage.setItem('quizResults', JSON.stringify(existingResults));
+
+            } catch (error) {
+                console.log('API call failed, saving locally:', error);
+                // Save to localStorage
+                const existingResults = JSON.parse(localStorage.getItem('quizResults') || '[]');
+                existingResults.push(quizResult);
+                localStorage.setItem('quizResults', JSON.stringify(existingResults));
+            }
+
+            // Show results
+            setTimeout(() => {
+                displayQuizScore(quizResult);
+            }, 1000);
+        }
+
+        function displayQuizScore(result) {
+            const quizContent = document.getElementById('quizContent');
+            const percentage = result.score;
+            let message = '';
+            let messageColor = '';
+
+            if (percentage >= 80) {
+                message = 'Uitstekend! U heeft een goede kennis van het recht.';
+                messageColor = 'text-green-600';
+            } else if (percentage >= 60) {
+                message = 'Goed gedaan! Er is nog ruimte voor verbetering.';
+                messageColor = 'text-yellow-600';
+            } else {
+                message = 'Meer studie nodig. Neem contact op voor juridisch advies.';
+                messageColor = 'text-red-600';
+            }
+
+            quizContent.innerHTML = `
+                <div class="text-center py-8">
+                    <div class="w-24 h-24 bg-zaans-blue rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-white">${percentage}%</span>
+                    </div>
+                    <h4 class="text-2xl font-semibold text-gray-800 mb-4">Quiz Voltooid!</h4>
+                    <p class="text-lg ${messageColor} mb-6">${message}</p>
+                    <div class="bg-gray-50 rounded-lg p-6 mb-6">
+                        <div class="grid grid-cols-2 gap-4 text-center">
+                            <div>
+                                <div class="text-2xl font-bold text-zaans-blue">${result.correctAnswers}</div>
+                                <div class="text-gray-600">Correct</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-gray-600">${result.totalQuestions - result.correctAnswers}</div>
+                                <div class="text-gray-600">Fout</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <button onclick="startQuiz()" class="w-full px-6 py-3 bg-zaans-blue text-white rounded-lg hover:bg-blue-900 transition-colors">
+                            Nieuwe Quiz Starten
+                        </button>
+                        <button onclick="backToQuizMenu()" class="w-full px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+                            Terug naar Menu
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function loadQuizResults() {
+            const resultsContent = document.getElementById('resultsContent');
+            
+            // Show loading
+            resultsContent.innerHTML = `
+                <div class="text-center py-8">
+                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-zaans-blue mx-auto mb-4"></div>
+                    <p class="text-gray-600">Resultaten laden...</p>
+                </div>
+            `;
+
+            try {
+                // Try to fetch from API
+                const response = await fetch(`${QUIZ_API_BASE_URL}/quiz/results`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error('API niet beschikbaar');
+                }
+
+                const results = await response.json();
+                displayQuizResults(results);
+            } catch (error) {
+                console.log('API call failed, using local data:', error);
+                // Fallback to localStorage
+                const localResults = JSON.parse(localStorage.getItem('quizResults') || '[]');
+                setTimeout(() => {
+                    displayQuizResults(localResults);
+                }, 1000);
+            }
+        }
+
+        function displayQuizResults(results) {
+            const resultsContent = document.getElementById('resultsContent');
+            
+            if (results.length === 0) {
+                resultsContent.innerHTML = `
+                    <div class="text-center py-12">
+                        <svg class="w-16 h-16 text-gray-400 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9,5V9H15V5H9M12,19A3,3 0 0,1 9,16A3,3 0 0,1 12,13A3,3 0 0,1 15,16A3,3 0 0,1 12,19M12,2L14,4H18A2,2 0 0,1 20,6V16A2,2 0 0,1 18,18H14L12,20L10,18H6A2,2 0 0,1 4,16V6A2,2 0 0,1 6,4H10L12,2Z"/>
+                        </svg>
+                        <h4 class="text-xl font-semibold text-gray-800 mb-2">Geen resultaten gevonden</h4>
+                        <p class="text-gray-600 mb-6">U heeft nog geen quiz voltooid.</p>
+                        <button onclick="startQuiz()" class="px-6 py-3 bg-zaans-blue text-white rounded-lg hover:bg-blue-900 transition-colors">
+                            Start uw eerste quiz
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            const resultsList = results.map((result, index) => {
+                const date = new Date(result.completedAt).toLocaleDateString('nl-NL');
+                const time = new Date(result.completedAt).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' });
+                
+                return `
+                    <div class="bg-gray-50 rounded-lg p-6 border-l-4 border-zaans-blue">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h5 class="font-semibold text-gray-800">Quiz #${results.length - index}</h5>
+                                <p class="text-sm text-gray-600">${date} om ${time}</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold text-zaans-blue">${result.score}%</div>
+                                <div class="text-sm text-gray-600">${result.correctAnswers}/${result.totalQuestions} correct</div>
+                            </div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-zaans-blue h-2 rounded-full" style="width: ${result.score}%"></div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            const averageScore = results.reduce((sum, result) => sum + result.score, 0) / results.length;
+
+            resultsContent.innerHTML = `
+                <div class="mb-8">
+                    <div class="grid md:grid-cols-3 gap-6 mb-6">
+                        <div class="bg-zaans-blue text-white rounded-lg p-6 text-center">
+                            <div class="text-3xl font-bold mb-2">${results.length}</div>
+                            <div class="text-blue-200">Voltooide quizzes</div>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg p-6 text-center">
+                            <div class="text-3xl font-bold text-zaans-blue mb-2">${Math.round(averageScore)}%</div>
+                            <div class="text-gray-600">Gemiddelde score</div>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg p-6 text-center">
+                            <div class="text-3xl font-bold text-zaans-blue mb-2">${Math.max(...results.map(r => r.score))}%</div>
+                            <div class="text-gray-600">Beste score</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-semibold text-gray-800 mb-6">Alle resultaten</h4>
+                    <div class="space-y-4">
+                        ${resultsList}
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <button onclick="startQuiz()" class="px-6 py-3 bg-zaans-blue text-white rounded-lg hover:bg-blue-900 transition-colors">
+                        Nieuwe Quiz Starten
+                    </button>
+                </div>
+            `;
+        }
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96a49faac2a4ae1c',t:'MTc1NDM3OTM4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

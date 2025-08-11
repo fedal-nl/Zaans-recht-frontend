@@ -1,6 +1,14 @@
 name: Zaans-recht-frontend
 region: us-east-1
 yamlVersion: 2
+backend:
+  path: ./backend
+  language:
+    name: js
+    runtime: nodejs20.x
+  classes:
+    - path: quiz.js
+      type: jsonrpc
 frontend:
   type: static
   path: .

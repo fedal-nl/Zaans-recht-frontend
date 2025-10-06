@@ -425,7 +425,7 @@
         });
 
         // Appointment Form Submission
-        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+        document.getElementById('appointmentForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             // Get form data
@@ -442,23 +442,47 @@
                 description: this.querySelector('textarea').value
             };
 
-            // Simulate sending appointment request
             const submitButton = this.querySelector('button[type="submit"]');
             const originalText = submitButton.textContent;
+            
+            // Show loading state
             submitButton.textContent = 'Bezig met verzenden...';
             submitButton.disabled = true;
 
-            setTimeout(() => {
-                alert(`Afspraak aangevraagd!\n\nDetails:\n- Naam: ${appointmentData.firstName} ${appointmentData.lastName}\n- Datum: ${appointmentData.date} om ${appointmentData.time}\n- Type: ${appointmentData.type === 'kantoor' ? 'Kantoorbezoek' : 'Videobellen'}\n- Rechtsgebied: ${appointmentData.legalArea}\n\nU ontvangt binnen 24 uur een bevestiging per e-mail.`);
+            try {
+                // Submit appointment data to API
+                await apiClient.submitAppointment(appointmentData);
                 
+                // Show success message and close modal
+                alert(`Afspraak aangevraagd!\n\nDetails:\n- Naam: ${appointmentData.firstName} ${appointmentData.lastName}\n- Datum: ${appointmentData.date} om ${appointmentData.time}\n- Type: ${appointmentData.type === 'kantoor' ? 'Kantoorbezoek' : 'Videobellen'}\n- Rechtsgebied: ${appointmentData.legalArea}\n\nU ontvangt binnen 24 uur een bevestiging per e-mail.`);
                 closeAppointmentModal();
+                
+            } catch (error) {
+                // Handle API errors
+                console.error('Appointment submission error:', error);
+                
+                let errorMessage = 'Er is een fout opgetreden bij het aanvragen van uw afspraak.';
+                
+                if (error instanceof ApiError) {
+                    if (error.isNetworkError()) {
+                        errorMessage = 'Geen internetverbinding. Controleer uw verbinding en probeer opnieuw.';
+                    } else if (error.isServerError()) {
+                        errorMessage = 'Server fout. Probeer het later opnieuw.';
+                    } else if (error.status === 409) {
+                        errorMessage = 'Het gekozen tijdslot is niet meer beschikbaar. Kies een ander tijdstip.';
+                    }
+                }
+                
+                alert(errorMessage);
+            } finally {
+                // Reset button state
                 submitButton.textContent = originalText;
                 submitButton.disabled = false;
-            }, 1500);
+            }
         });
 
         // Contact Form Submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const formData = {
@@ -469,25 +493,77 @@
                 message: this.querySelector('textarea').value
             };
 
-            // Simulate sending contact form
             const submitButton = this.querySelector('button[type="submit"]');
             const originalText = submitButton.textContent;
+            const successElement = document.getElementById('contactFormSuccess');
+            
+            // Show loading state
             submitButton.textContent = 'Bezig met verzenden...';
             submitButton.disabled = true;
 
-            setTimeout(() => {
+            try {
+                // Submit form data to API
+                await apiClient.submitContactForm(formData);
+                
+                // Show success message
                 this.style.display = 'none';
-                document.getElementById('contactFormSuccess').classList.remove('hidden');
+                successElement.classList.remove('hidden');
                 
                 // Reset form after 5 seconds
                 setTimeout(() => {
                     this.reset();
                     this.style.display = 'block';
-                    document.getElementById('contactFormSuccess').classList.add('hidden');
+                    successElement.classList.add('hidden');
                     submitButton.textContent = originalText;
                     submitButton.disabled = false;
                 }, 5000);
-            }, 1500);
+                
+            } catch (error) {
+                // Handle API errors
+                console.error('Contact form submission error:', error);
+                
+                // Show error message to user
+                let errorMessage = 'Er is een fout opgetreden bij het verzenden van uw bericht.';
+                
+                if (error instanceof ApiError) {
+                    if (error.isNetworkError()) {
+                        errorMessage = 'Geen internetverbinding. Controleer uw verbinding en probeer opnieuw.';
+                    } else if (error.isServerError()) {
+                        errorMessage = 'Server fout. Probeer het later opnieuw.';
+                    }
+                }
+                
+                // Show error in success element (reuse for simplicity)
+                successElement.innerHTML = `
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+                        </svg>
+                        ${errorMessage}
+                    </div>
+                `;
+                successElement.className = 'mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg';
+                successElement.classList.remove('hidden');
+                
+                // Reset button state
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+                
+                // Hide error after 8 seconds
+                setTimeout(() => {
+                    successElement.classList.add('hidden');
+                    // Reset to success styling for next time
+                    successElement.className = 'hidden mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg';
+                    successElement.innerHTML = `
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Bedankt! Uw bericht is verzonden. We nemen binnen 24 uur contact met u op.
+                        </div>
+                    `;
+                }, 8000);
+            }
         });
 
         // Smooth scrolling for navigation links
@@ -532,5 +608,10 @@
             }
         });
     </script>
+
+    <!-- API Configuration -->
+    <script src="js/config.js"></script>
+    <!-- API Module -->
+    <script src="js/api.js"></script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96a49faac2a4ae1c',t:'MTc1NDM3OTM4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

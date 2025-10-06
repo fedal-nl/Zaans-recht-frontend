@@ -396,6 +396,47 @@
     </footer>
 
     <script>
+        // API Configuration
+        const API_CONFIG = {
+            // Configure these endpoints based on your backend API
+            contactFormEndpoint: '/api/contact',
+            appointmentFormEndpoint: '/api/appointment',
+            // Set to false to disable API calls and use fallback behavior
+            apiEnabled: true
+        };
+
+        // Utility function to submit form data to API
+        async function submitFormToAPI(endpoint, formData) {
+            if (!API_CONFIG.apiEnabled) {
+                // Fallback: simulate successful submission
+                return { success: true, message: 'Form submitted successfully (simulation mode)' };
+            }
+
+            try {
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                return { success: true, data: result, message: result.message || 'Form submitted successfully' };
+            } catch (error) {
+                console.error('API submission error:', error);
+                return { 
+                    success: false, 
+                    error: error.message,
+                    message: 'Er is een fout opgetreden bij het verzenden. Probeer het later opnieuw of neem direct contact op.'
+                };
+            }
+        }
+
         // Set minimum date to today
         document.addEventListener('DOMContentLoaded', function() {
             const dateInput = document.querySelector('input[type="date"]');
@@ -425,7 +466,7 @@
         });
 
         // Appointment Form Submission
-        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+        document.getElementById('appointmentForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             // Get form data
@@ -439,55 +480,107 @@
                 date: this.querySelector('input[type="date"]').value,
                 time: this.querySelectorAll('select')[1].value,
                 type: this.querySelector('input[name="appointmentType"]:checked').value,
-                description: this.querySelector('textarea').value
+                description: this.querySelector('textarea').value,
+                formType: 'appointment'
             };
 
-            // Simulate sending appointment request
+            // Submit to API
             const submitButton = this.querySelector('button[type="submit"]');
             const originalText = submitButton.textContent;
             submitButton.textContent = 'Bezig met verzenden...';
             submitButton.disabled = true;
 
-            setTimeout(() => {
-                alert(`Afspraak aangevraagd!\n\nDetails:\n- Naam: ${appointmentData.firstName} ${appointmentData.lastName}\n- Datum: ${appointmentData.date} om ${appointmentData.time}\n- Type: ${appointmentData.type === 'kantoor' ? 'Kantoorbezoek' : 'Videobellen'}\n- Rechtsgebied: ${appointmentData.legalArea}\n\nU ontvangt binnen 24 uur een bevestiging per e-mail.`);
+            try {
+                const result = await submitFormToAPI(API_CONFIG.appointmentFormEndpoint, appointmentData);
                 
-                closeAppointmentModal();
+                if (result.success) {
+                    // Show success message with API response data
+                    let successMessage = `Afspraak aangevraagd!\n\nDetails:\n- Naam: ${appointmentData.firstName} ${appointmentData.lastName}\n- Datum: ${appointmentData.date} om ${appointmentData.time}\n- Type: ${appointmentData.type === 'kantoor' ? 'Kantoorbezoek' : 'Videobellen'}\n- Rechtsgebied: ${appointmentData.legalArea}`;
+                    
+                    if (result.data && result.data.appointmentId) {
+                        successMessage += `\n- Referentienummer: ${result.data.appointmentId}`;
+                    }
+                    
+                    successMessage += '\n\nU ontvangt binnen 24 uur een bevestiging per e-mail.';
+                    
+                    if (result.message && result.message !== 'Form submitted successfully') {
+                        successMessage += `\n\nBericht van server: ${result.message}`;
+                    }
+                    
+                    alert(successMessage);
+                    closeAppointmentModal();
+                } else {
+                    // Show error message
+                    alert(`Fout bij verzenden afspraak:\n\n${result.message}`);
+                }
+            } catch (error) {
+                console.error('Appointment submission error:', error);
+                alert('Er is een onverwachte fout opgetreden. Probeer het later opnieuw of neem direct contact op.');
+            } finally {
                 submitButton.textContent = originalText;
                 submitButton.disabled = false;
-            }, 1500);
+            }
         });
 
         // Contact Form Submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const formData = {
+            const contactData = {
                 name: this.querySelector('input[type="text"]').value,
                 email: this.querySelector('input[type="email"]').value,
                 phone: this.querySelector('input[type="tel"]').value,
                 subject: this.querySelector('select').value,
-                message: this.querySelector('textarea').value
+                message: this.querySelector('textarea').value,
+                formType: 'contact'
             };
 
-            // Simulate sending contact form
+            // Submit to API
             const submitButton = this.querySelector('button[type="submit"]');
             const originalText = submitButton.textContent;
             submitButton.textContent = 'Bezig met verzenden...';
             submitButton.disabled = true;
 
-            setTimeout(() => {
-                this.style.display = 'none';
-                document.getElementById('contactFormSuccess').classList.remove('hidden');
+            try {
+                const result = await submitFormToAPI(API_CONFIG.contactFormEndpoint, contactData);
                 
-                // Reset form after 5 seconds
-                setTimeout(() => {
-                    this.reset();
-                    this.style.display = 'block';
-                    document.getElementById('contactFormSuccess').classList.add('hidden');
-                    submitButton.textContent = originalText;
-                    submitButton.disabled = false;
-                }, 5000);
-            }, 1500);
+                if (result.success) {
+                    // Show success message
+                    this.style.display = 'none';
+                    const successDiv = document.getElementById('contactFormSuccess');
+                    
+                    // Update success message if API provided custom message
+                    if (result.data && result.data.ticketId) {
+                        const messageSpan = successDiv.querySelector('div').lastChild;
+                        messageSpan.textContent = `Bedankt! Uw bericht is verzonden (Ticket: ${result.data.ticketId}). We nemen binnen 24 uur contact met u op.`;
+                    } else if (result.message && result.message !== 'Form submitted successfully') {
+                        const messageSpan = successDiv.querySelector('div').lastChild;
+                        messageSpan.textContent = result.message;
+                    }
+                    
+                    successDiv.classList.remove('hidden');
+                    
+                    // Reset form after 5 seconds
+                    setTimeout(() => {
+                        this.reset();
+                        this.style.display = 'block';
+                        successDiv.classList.add('hidden');
+                        
+                        // Restore original success message for next time
+                        const messageSpan = successDiv.querySelector('div').lastChild;
+                        messageSpan.textContent = 'Bedankt! Uw bericht is verzonden. We nemen binnen 24 uur contact met u op.';
+                    }, 5000);
+                } else {
+                    // Show error message
+                    alert(`Fout bij verzenden bericht:\n\n${result.message}`);
+                }
+            } catch (error) {
+                console.error('Contact submission error:', error);
+                alert('Er is een onverwachte fout opgetreden. Probeer het later opnieuw of neem direct contact op.');
+            } finally {
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }
         });
 
         // Smooth scrolling for navigation links

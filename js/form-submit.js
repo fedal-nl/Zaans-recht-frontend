@@ -4,7 +4,7 @@ let appointmentWidgetId = null;
 let contactWidgetId = null;
 
 // Attach form logic AFTER captcha renders
-function onloadRecaptcha() {
+window.onloadRecaptcha = function() {
     console.log('reCAPTCHA API loaded, rendering widgets...');
 
     // Render the appointment form CAPTCHA
@@ -13,7 +13,7 @@ function onloadRecaptcha() {
         appointmentWidgetId = grecaptcha.render(appointmentDiv, {
             sitekey: '6Lcam_srAAAAAOxgfnoik-nEGZqvWc8A1NtupfG9',
         });
-        console.log('Rendered appointment CAPTCHA, widget ID:', appointmentWidgetId);
+        // console.log('Rendered appointment CAPTCHA, widget ID:', appointmentWidgetId);
     }
 
     // Render the contact form CAPTCHA
@@ -22,7 +22,7 @@ function onloadRecaptcha() {
         contactWidgetId = grecaptcha.render(contactDiv, {
             sitekey: '6Lcam_srAAAAAOxgfnoik-nEGZqvWc8A1NtupfG9',
         });
-        console.log('Rendered contact CAPTCHA, widget ID:', contactWidgetId);
+        // console.log('Rendered contact CAPTCHA, widget ID:', contactWidgetId);
     }
 
     // Now attach event listeners (AFTER widget IDs exist)
@@ -41,11 +41,11 @@ function handleFormSubmit(formElement, widgetId, onSuccess) {
     formElement.addEventListener('submit', async function (e) {
         e.preventDefault();
 
-        console.log('Submitting form:', formElement.id);
+        // console.log('Submitting form:', formElement.id);
 
         const token = grecaptcha.getResponse(widgetId);
-        console.log('Getting CAPTCHA response for widget ID:', widgetId);
-        console.log('CAPTCHA token response:', token);
+        // console.log('Getting CAPTCHA response for widget ID:', widgetId);
+        // console.log('CAPTCHA token response:', token);
 
         if (!token) {
             alert('Bevestig a.u.b. dat u geen robot bent.');
@@ -55,7 +55,7 @@ function handleFormSubmit(formElement, widgetId, onSuccess) {
         const formData = new FormData(formElement);
         // convert FormData to plain object to be converted to JSON later
         const plainData = Object.fromEntries(formData.entries());
-        console.log('Form data as plain object:', plainData);
+        // console.log('Form data as plain object:', plainData);
         // convert the form to contain the full_name field if firstName and lastName are present
         if (plainData.firstName && plainData.lastName) {
             plainData.full_name = `${plainData.firstName} ${plainData.lastName}`;
@@ -77,7 +77,7 @@ function handleFormSubmit(formElement, widgetId, onSuccess) {
 
         const jsonBody = JSON.stringify(plainData);
         
-        console.log('Form JSON body:', jsonBody);
+        // console.log('Form JSON body:', jsonBody);
 
         const submitButton = formElement.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;

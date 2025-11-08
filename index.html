@@ -6,7 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zaans Recht - Eerlijk juridisch advies</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap">
+
     <!-- Favicon for most browsers -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 
@@ -233,19 +235,19 @@
                     <form id="contactForm" class="space-y-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Naam *</label>
-                            <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Uw naam">
+                            <input type="text" name="full_name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Uw naam">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">E-mail *</label>
-                            <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="uw.email@voorbeeld.nl">
+                            <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="uw.email@voorbeeld.nl">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Telefoon</label>
-                            <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="06-12345678 (optioneel)">
+                            <input type="tel" name="telephone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="06-12345678 (optioneel)">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Onderwerp *</label>
-                            <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent">
+                            <select name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent">
                                 <option value="">Selecteer een onderwerp</option>
                                 <option value="algemene-vraag">Algemene vraag</option>
                                 <option value="juridisch-advies">Juridisch advies</option>
@@ -257,14 +259,19 @@
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Bericht *</label>
-                            <textarea required rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Uw bericht..."></textarea>
+                            <textarea name="description" required rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Uw bericht..."></textarea>
                         </div>
                         <div class="flex items-start">
-                            <input type="checkbox" required class="mt-1 mr-3 text-zaans-blue">
+                            <input type="checkbox" name="terms_accepted" required class="mt-1 mr-3 text-zaans-blue">
                             <label class="text-sm text-gray-600">
                                 Ik ga akkoord met de <a href="#" class="text-zaans-blue hover:underline">privacyverklaring</a> en geef toestemming voor het verwerken van mijn gegevens. *
                             </label>
                         </div>
+                        <div
+                            id="captchaContact"
+                            class="g-recaptcha"
+                            data-sitekey="6Lcam_srAAAAAOxgfnoik-nEGZqvWc8A1NtupfG9"
+                        ></div>
                         <button type="submit" class="w-full bg-zaans-blue text-white py-3 rounded-lg font-semibold hover:bg-blue-900 transition-colors">
                             Verstuur bericht
                         </button>
@@ -300,26 +307,26 @@
                     <div class="grid md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Voornaam *</label>
-                            <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Uw voornaam">
+                            <input type="text" name="firstName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Uw voornaam">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Achternaam *</label>
-                            <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Uw achternaam">
+                            <input type="text" name="lastName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Uw achternaam">
                         </div>
                     </div>
                     <div class="grid md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">E-mail *</label>
-                            <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="uw.email@voorbeeld.nl">
+                            <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="uw.email@voorbeeld.nl">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Telefoon *</label>
-                            <input type="tel" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="06-12345678">
+                            <input type="tel" name="telephone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="06-12345678">
                         </div>
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Rechtsgebied *</label>
-                        <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent">
+                        <select name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent">
                             <option value="">Selecteer een rechtsgebied</option>
                             <option value="ondernemingsrecht">Ondernemingsrecht</option>
                             <option value="familierecht">Familierecht</option>
@@ -332,11 +339,11 @@
                     <div class="grid md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Gewenste datum *</label>
-                            <input type="date" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" min="">
+                            <input type="date" name="desiredDate" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" min="">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Gewenste tijd *</label>
-                            <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent">
+                            <select name="desiredTime" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent">
                                 <option value="">Selecteer een tijd</option>
                                 <option value="09:00">09:00</option>
                                 <option value="10:00">10:00</option>
@@ -352,14 +359,14 @@
                         <label class="block text-sm font-medium text-gray-700 mb-2">Type afspraak *</label>
                         <div class="grid md:grid-cols-2 gap-4">
                             <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
-                                <input type="radio" name="appointmentType" value="kantoor" required class="mr-3 text-zaans-blue">
+                                <input type="radio" name="meeting_type" value="kantoor" required class="mr-3 text-zaans-blue">
                                 <div>
                                     <div class="font-medium">Kantoorbezoek</div>
                                     <div class="text-sm text-gray-600">Persoonlijk gesprek op kantoor</div>
                                 </div>
                             </label>
                             <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
-                                <input type="radio" name="appointmentType" value="videobellen" required class="mr-3 text-zaans-blue">
+                                <input type="radio" name="meeting_type" value="videobellen" required class="mr-3 text-zaans-blue">
                                 <div>
                                     <div class="font-medium">Videobellen</div>
                                     <div class="text-sm text-gray-600">Online gesprek via video</div>
@@ -369,8 +376,20 @@
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Korte omschrijving van uw vraag *</label>
-                        <textarea required rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Beschrijf kort waar u hulp bij nodig heeft..."></textarea>
+                        <textarea required rows="4" name="description" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Beschrijf kort waar u hulp bij nodig heeft..."></textarea>
                     </div>
+                    <div class="flex items-start">
+                        <input type="checkbox" name="terms_accepted" required class="mt-1 mr-3 text-zaans-blue">
+                        <label class="text-sm text-gray-600">
+                            Ik ga akkoord met de <a href="#" class="text-zaans-blue hover:underline">privacyverklaring</a> en geef toestemming voor het verwerken van mijn gegevens. *
+                        </label>
+                    </div>
+                    <div
+                        id="captchaAppointment"
+                        class="g-recaptcha"
+                        data-sitekey="6Lcam_srAAAAAOxgfnoik-nEGZqvWc8A1NtupfG9"
+                    ></div>
+
                     <div class="flex justify-end space-x-4">
                         <button type="button" onclick="closeAppointmentModal()" class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
                             Annuleren
@@ -424,71 +443,71 @@
             }
         });
 
-        // Appointment Form Submission
-        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // // Appointment Form Submission
+        // document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+        //     e.preventDefault();
             
-            // Get form data
-            const formData = new FormData(this);
-            const appointmentData = {
-                firstName: formData.get('firstName') || this.querySelector('input[placeholder="Uw voornaam"]').value,
-                lastName: formData.get('lastName') || this.querySelector('input[placeholder="Uw achternaam"]').value,
-                email: this.querySelector('input[type="email"]').value,
-                phone: this.querySelector('input[type="tel"]').value,
-                legalArea: this.querySelector('select').value,
-                date: this.querySelector('input[type="date"]').value,
-                time: this.querySelectorAll('select')[1].value,
-                type: this.querySelector('input[name="appointmentType"]:checked').value,
-                description: this.querySelector('textarea').value
-            };
+        //     // Get form data
+        //     const formData = new FormData(this);
+        //     const appointmentData = {
+        //         firstName: formData.get('firstName') || this.querySelector('input[placeholder="Uw voornaam"]').value,
+        //         lastName: formData.get('lastName') || this.querySelector('input[placeholder="Uw achternaam"]').value,
+        //         email: this.querySelector('input[type="email"]').value,
+        //         phone: this.querySelector('input[type="tel"]').value,
+        //         legalArea: this.querySelector('select').value,
+        //         date: this.querySelector('input[type="date"]').value,
+        //         time: this.querySelectorAll('select')[1].value,
+        //         type: this.querySelector('input[name="appointmentType"]:checked').value,
+        //         description: this.querySelector('textarea').value
+        //     };
 
-            // Simulate sending appointment request
-            const submitButton = this.querySelector('button[type="submit"]');
-            const originalText = submitButton.textContent;
-            submitButton.textContent = 'Bezig met verzenden...';
-            submitButton.disabled = true;
+        //     // Simulate sending appointment request
+        //     const submitButton = this.querySelector('button[type="submit"]');
+        //     const originalText = submitButton.textContent;
+        //     submitButton.textContent = 'Bezig met verzenden...';
+        //     submitButton.disabled = true;
 
-            setTimeout(() => {
-                alert(`Afspraak aangevraagd!\n\nDetails:\n- Naam: ${appointmentData.firstName} ${appointmentData.lastName}\n- Datum: ${appointmentData.date} om ${appointmentData.time}\n- Type: ${appointmentData.type === 'kantoor' ? 'Kantoorbezoek' : 'Videobellen'}\n- Rechtsgebied: ${appointmentData.legalArea}\n\nU ontvangt binnen 24 uur een bevestiging per e-mail.`);
+        //     setTimeout(() => {
+        //         alert(`Afspraak aangevraagd!\n\nDetails:\n- Naam: ${appointmentData.firstName} ${appointmentData.lastName}\n- Datum: ${appointmentData.date} om ${appointmentData.time}\n- Type: ${appointmentData.type === 'kantoor' ? 'Kantoorbezoek' : 'Videobellen'}\n- Rechtsgebied: ${appointmentData.legalArea}\n\nU ontvangt binnen 24 uur een bevestiging per e-mail.`);
                 
-                closeAppointmentModal();
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-            }, 1500);
-        });
+        //         closeAppointmentModal();
+        //         submitButton.textContent = originalText;
+        //         submitButton.disabled = false;
+        //     }, 1500);
+        // });
 
-        // Contact Form Submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // // Contact Form Submission
+        // document.getElementById('contactForm').addEventListener('submit', function(e) {
+        //     e.preventDefault();
             
-            const formData = {
-                name: this.querySelector('input[type="text"]').value,
-                email: this.querySelector('input[type="email"]').value,
-                phone: this.querySelector('input[type="tel"]').value,
-                subject: this.querySelector('select').value,
-                message: this.querySelector('textarea').value
-            };
+        //     const formData = {
+        //         name: this.querySelector('input[type="text"]').value,
+        //         email: this.querySelector('input[type="email"]').value,
+        //         phone: this.querySelector('input[type="tel"]').value,
+        //         subject: this.querySelector('select').value,
+        //         message: this.querySelector('textarea').value
+        //     };
 
-            // Simulate sending contact form
-            const submitButton = this.querySelector('button[type="submit"]');
-            const originalText = submitButton.textContent;
-            submitButton.textContent = 'Bezig met verzenden...';
-            submitButton.disabled = true;
+        //     // Simulate sending contact form
+        //     const submitButton = this.querySelector('button[type="submit"]');
+        //     const originalText = submitButton.textContent;
+        //     submitButton.textContent = 'Bezig met verzenden...';
+        //     submitButton.disabled = true;
 
-            setTimeout(() => {
-                this.style.display = 'none';
-                document.getElementById('contactFormSuccess').classList.remove('hidden');
+        //     setTimeout(() => {
+        //         this.style.display = 'none';
+        //         document.getElementById('contactFormSuccess').classList.remove('hidden');
                 
-                // Reset form after 5 seconds
-                setTimeout(() => {
-                    this.reset();
-                    this.style.display = 'block';
-                    document.getElementById('contactFormSuccess').classList.add('hidden');
-                    submitButton.textContent = originalText;
-                    submitButton.disabled = false;
-                }, 5000);
-            }, 1500);
-        });
+        //         // Reset form after 5 seconds
+        //         setTimeout(() => {
+        //             this.reset();
+        //             this.style.display = 'block';
+        //             document.getElementById('contactFormSuccess').classList.add('hidden');
+        //             submitButton.textContent = originalText;
+        //             submitButton.disabled = false;
+        //         }, 5000);
+        //     }, 1500);
+        // });
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -532,5 +551,13 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96a49faac2a4ae1c',t:'MTc1NDM3OTM4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96a49faac2a4ae1c',t:'MTc1NDM3OTM4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<!-- Google reCAPTCHA script -->
+
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadRecaptcha&render=explicit" async defer></script>
+<script src="./js/form-submit.js"></script>
+
+
+</body>
+
 </html>

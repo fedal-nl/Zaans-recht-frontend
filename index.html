@@ -443,72 +443,6 @@
             }
         });
 
-        // // Appointment Form Submission
-        // document.getElementById('appointmentForm').addEventListener('submit', function(e) {
-        //     e.preventDefault();
-            
-        //     // Get form data
-        //     const formData = new FormData(this);
-        //     const appointmentData = {
-        //         firstName: formData.get('firstName') || this.querySelector('input[placeholder="Uw voornaam"]').value,
-        //         lastName: formData.get('lastName') || this.querySelector('input[placeholder="Uw achternaam"]').value,
-        //         email: this.querySelector('input[type="email"]').value,
-        //         phone: this.querySelector('input[type="tel"]').value,
-        //         legalArea: this.querySelector('select').value,
-        //         date: this.querySelector('input[type="date"]').value,
-        //         time: this.querySelectorAll('select')[1].value,
-        //         type: this.querySelector('input[name="appointmentType"]:checked').value,
-        //         description: this.querySelector('textarea').value
-        //     };
-
-        //     // Simulate sending appointment request
-        //     const submitButton = this.querySelector('button[type="submit"]');
-        //     const originalText = submitButton.textContent;
-        //     submitButton.textContent = 'Bezig met verzenden...';
-        //     submitButton.disabled = true;
-
-        //     setTimeout(() => {
-        //         alert(`Afspraak aangevraagd!\n\nDetails:\n- Naam: ${appointmentData.firstName} ${appointmentData.lastName}\n- Datum: ${appointmentData.date} om ${appointmentData.time}\n- Type: ${appointmentData.type === 'kantoor' ? 'Kantoorbezoek' : 'Videobellen'}\n- Rechtsgebied: ${appointmentData.legalArea}\n\nU ontvangt binnen 24 uur een bevestiging per e-mail.`);
-                
-        //         closeAppointmentModal();
-        //         submitButton.textContent = originalText;
-        //         submitButton.disabled = false;
-        //     }, 1500);
-        // });
-
-        // // Contact Form Submission
-        // document.getElementById('contactForm').addEventListener('submit', function(e) {
-        //     e.preventDefault();
-            
-        //     const formData = {
-        //         name: this.querySelector('input[type="text"]').value,
-        //         email: this.querySelector('input[type="email"]').value,
-        //         phone: this.querySelector('input[type="tel"]').value,
-        //         subject: this.querySelector('select').value,
-        //         message: this.querySelector('textarea').value
-        //     };
-
-        //     // Simulate sending contact form
-        //     const submitButton = this.querySelector('button[type="submit"]');
-        //     const originalText = submitButton.textContent;
-        //     submitButton.textContent = 'Bezig met verzenden...';
-        //     submitButton.disabled = true;
-
-        //     setTimeout(() => {
-        //         this.style.display = 'none';
-        //         document.getElementById('contactFormSuccess').classList.remove('hidden');
-                
-        //         // Reset form after 5 seconds
-        //         setTimeout(() => {
-        //             this.reset();
-        //             this.style.display = 'block';
-        //             document.getElementById('contactFormSuccess').classList.add('hidden');
-        //             submitButton.textContent = originalText;
-        //             submitButton.disabled = false;
-        //         }, 5000);
-        //     }, 1500);
-        // });
-
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -555,7 +489,7 @@
 <!-- Google reCAPTCHA script -->
 
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadRecaptcha&render=explicit" async defer></script>
-<script src="./js/form-submit.js"></script>
+<script src="./js/form-submit.js" type="module"></script>
 
 
 </body>

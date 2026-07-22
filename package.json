@@ -1,5 +1,12 @@
 {
-  "dependencies": {
-    "genezio": "^3.2.10"
+  "name": "zaans-recht-frontend",
+  "private": true,
+  "scripts": {
+    "build": "npm run build:css && npm run build:config",
+    "build:css": "tailwindcss -i ./css/tailwind.input.css -o ./css/tailwind.css --minify",
+    "build:config": "node ./scripts/generate-config.mjs"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
   }
 }

@@ -1,5 +1,10 @@
 import { API_URL } from './api.js';
 
+const RECAPTCHA_SITE_KEY = window.APP_CONFIG?.recaptchaSiteKey;
+if (!RECAPTCHA_SITE_KEY) {
+    throw new Error('RECAPTCHA_SITE_KEY is not configured');
+}
+
 let appointmentWidgetId = null;
 let contactWidgetId = null;
 
@@ -11,7 +16,7 @@ window.onloadRecaptcha = function() {
     const appointmentDiv = document.getElementById('captchaAppointment');
     if (appointmentDiv) {
         appointmentWidgetId = grecaptcha.render(appointmentDiv, {
-            sitekey: '6Lcam_srAAAAAOxgfnoik-nEGZqvWc8A1NtupfG9',
+            sitekey: RECAPTCHA_SITE_KEY,
         });
         // console.log('Rendered appointment CAPTCHA, widget ID:', appointmentWidgetId);
     }
@@ -20,7 +25,7 @@ window.onloadRecaptcha = function() {
     const contactDiv = document.getElementById('captchaContact');
     if (contactDiv) {
         contactWidgetId = grecaptcha.render(contactDiv, {
-            sitekey: '6Lcam_srAAAAAOxgfnoik-nEGZqvWc8A1NtupfG9',
+            sitekey: RECAPTCHA_SITE_KEY,
         });
         // console.log('Rendered contact CAPTCHA, widget ID:', contactWidgetId);
     }

@@ -22,21 +22,8 @@
 
     <!-- Android / Chrome -->
     <link rel="manifest" href="assets/site.webmanifest">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'zaans-blue': '#002B5C',
-                    },
-                    fontFamily: {
-                        'sans': ['Open Sans', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="./css/tailwind.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body class="font-sans bg-white text-gray-800">
     <!-- Header -->
@@ -270,7 +257,6 @@
                         <div
                             id="captchaContact"
                             class="g-recaptcha"
-                            data-sitekey="6Lcam_srAAAAAOxgfnoik-nEGZqvWc8A1NtupfG9"
                         ></div>
                         <button type="submit" class="w-full bg-zaans-blue text-white py-3 rounded-lg font-semibold hover:bg-blue-900 transition-colors">
                             Verstuur bericht
@@ -387,7 +373,6 @@
                     <div
                         id="captchaAppointment"
                         class="g-recaptcha"
-                        data-sitekey="6Lcam_srAAAAAOxgfnoik-nEGZqvWc8A1NtupfG9"
                     ></div>
 
                     <div class="flex justify-end space-x-4">
@@ -485,9 +470,9 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96a49faac2a4ae1c',t:'MTc1NDM3OTM4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 <!-- Google reCAPTCHA script -->
 
+<script src="./js/config.js"></script>
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadRecaptcha&render=explicit" async defer></script>
 <script src="./js/form-submit.js" type="module"></script>
 

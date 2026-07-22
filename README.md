@@ -8,7 +8,7 @@ Install the build-only Tailwind dependency and start the site:
 
 ```bash
 npm ci
-make run-http-server
+make start
 ```
 
 Open <http://localhost:8002>. The local defaults use:
@@ -48,3 +48,12 @@ secrets in the frontend or Cloudflare Pages build variables.
 
 Tailwind is used only at build time. The deployed site loads the generated
 `css/tailwind.css` file and does not load Tailwind from a CDN.
+
+Before committing and pushing, run:
+
+```bash
+make pre-push
+```
+
+This performs a clean dependency install, compiles the site, and checks npm
+dependencies for moderate-or-higher vulnerabilities.

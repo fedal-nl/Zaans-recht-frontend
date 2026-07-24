@@ -9,6 +9,16 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" as="style">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap">
 
+        <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7QKGL27J3Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-7QKGL27J3Y');
+    </script>
+
     <!-- Favicon for most browsers -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 
@@ -24,6 +34,16 @@
     <link rel="manifest" href="assets/site.webmanifest">
     <link rel="stylesheet" href="./css/tailwind.css">
     <link rel="stylesheet" href="./css/styles.css">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7QKGL27J3Y"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-7QKGL27J3Y');
+    </script>
 </head>
 <body class="font-sans bg-white text-gray-800">
     <!-- Header -->
@@ -32,10 +52,18 @@
              <div class="flex items-center space-x-3">
                 <div class="Izwocg" style="width: 191.154px; height: 108.002px; transform: translate(0px, -24.4303px) rotate(0deg);"><img class="_7_i_XA" crossorigin="anonymous" draggable="false" src="/assets/img/logo.png"></div>
             </div>
-            <div class="hidden md:flex space-x-8">
-                <a href="#over" class="text-gray-700 hover:text-zaans-blue transition-colors">Over ons</a>
-                <a href="#diensten" class="text-gray-700 hover:text-zaans-blue transition-colors">Diensten</a>
-                <a href="#contact" class="text-gray-700 hover:text-zaans-blue transition-colors">Contact</a>
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex space-x-8">
+                    <a href="#over" class="text-gray-700 hover:text-zaans-blue transition-colors" data-i18n="nav_about">Over ons</a>
+                    <a href="#diensten" class="text-gray-700 hover:text-zaans-blue transition-colors" data-i18n="nav_services">Diensten</a>
+                    <a href="#contact" class="text-gray-700 hover:text-zaans-blue transition-colors" data-i18n="nav_contact">Contact</a>
+                </div>
+                <label for="languageSelect" class="sr-only" data-i18n="language_label">Taal</label>
+                <select id="languageSelect" class="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 focus:border-zaans-blue focus:outline-none focus:ring-2 focus:ring-zaans-blue" aria-label="Taal" data-i18n-aria-label="language_label">
+                    <option value="nl">Nederlands</option>
+                    <option value="ar">العربية</option>
+                    <option value="en">English</option>
+                </select>
             </div>
             <button class="md:hidden text-zaans-blue">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -50,20 +78,20 @@
         <div class="grid md:grid-cols-2 gap-12 items-center">
             <div>
                 <p class="text-lg md:text-2xl font-sauce text-zaans-blue mb-6 leading-tight">
-                    Welkom bij Zaans Recht!<br>
+                    <span data-i18n="welcome">Welkom bij Zaans Recht!</span><br>
                 </p>
                 <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                    Wij geven gratis juridisch advies en duidelijkheid over uw rechten
+                    <span data-i18n="hero_intro">Wij geven gratis juridisch advies en duidelijkheid over uw rechten</span>
                 </p>
                 <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                    Zo zorgen we ervoor dat u uw juridische situatie eenvoudig en begrijpelijk kunt overzien.
+                    <span data-i18n="hero_explanation">Zo zorgen we ervoor dat u uw juridische situatie eenvoudig en begrijpelijk kunt overzien.</span>
                 </p>
                 <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                    Bij Zaans Recht staat uw recht centraal. Heeft u vragen of behoefte aan ondersteuning? Maak dan een afspraak!
+                    <span data-i18n="hero_action">Bij Zaans Recht staat uw recht centraal. Heeft u vragen of behoefte aan ondersteuning? Maak dan een afspraak!</span>
                 </p>
     
                 <button onclick="openAppointmentModal()" class="bg-zaans-blue text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-900 transition-colors shadow-lg">
-                    Maak een afspraak
+                    <span data-i18n="make_appointment">Maak een afspraak</span>
                 </button>
             </div>
             <div class="flex justify-center">
@@ -82,24 +110,24 @@
     <section id="over" class="bg-gray-50 py-16">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-light text-zaans-blue mb-4">Over ons</h2>
+                <h2 class="text-3xl font-light text-zaans-blue mb-4" data-i18n="about_title">Over ons</h2>
                 <div class="w-16 h-1 bg-zaans-blue mx-auto"></div>
             </div>
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed" data-i18n="about_description_1">
                         Bij Zaans Recht bieden wij gratis juridisch advies aan iedereen die vragen heeft over zijn of haar rechten.
                         Ons doel is om mensen te helpen hun juridische situatie helder te krijgen en begrijpelijk advies te geven,
                         zodat zij bewuste beslissingen kunnen nemen.
                     </p>
-                    <p class="text-lg text-gray-600 leading-relaxed">
+                    <p class="text-lg text-gray-600 leading-relaxed" data-i18n="about_description_2">
                         Wij begrijpen dat juridische kwesties ingewikkeld kunnen zijn. 
                         Daarom staan wij klaar om u te begeleiden met advies over diverse rechtsgebieden. 
                         Naast gratis advies, bieden wij ook de mogelijkheid om juridische stukken voor u op te stellen, 
                         zoals bezwaarschriften en klachtenbrieven. Hieraan zijn kosten verbonden, die wij vooraf met u bespreken.
                     </p>
                     <br>
-                    <p class="text-lg text-gray-600 leading-relaxed">
+                    <p class="text-lg text-gray-600 leading-relaxed" data-i18n="walk_in">
                         Elke donderdagmiddag om 16:00 uur kunt u zonder afspraak binnenlopen tijdens ons inloopspreekuur in 
                         Bibliotheek Zaandam (Westzijde 170 A, 1506 EK Zaandam).
                     </p>
@@ -118,7 +146,7 @@
     <section id="diensten" class="py-16">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-light text-zaans-blue mb-4">Diensten</h2>
+                <h2 class="text-3xl font-light text-zaans-blue mb-4" data-i18n="services_title">Diensten</h2>
                 <div class="w-16 h-1 bg-zaans-blue mx-auto"></div>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -128,8 +156,8 @@
                             <path d="M12,3L1,9L12,15L21,9V16H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-zaans-blue mb-3">Ondernemingsrecht</h3>
-                    <p class="text-gray-600">Juridische ondersteuning voor ondernemers, van contracten tot geschillen.</p>
+                    <h3 class="text-xl font-semibold text-zaans-blue mb-3" data-i18n="corporate_law">Ondernemingsrecht</h3>
+                    <p class="text-gray-600" data-i18n="corporate_law_description">Juridische ondersteuning voor ondernemers, van contracten tot geschillen.</p>
                 </div>
                 <div class="text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
                     <div class="w-16 h-16 bg-zaans-blue rounded-full flex items-center justify-center mx-auto mb-4">
@@ -137,8 +165,8 @@
                             <path d="M12,3L2,12H5V20H19V12H22L12,3M12,8.75A2.25,2.25 0 0,1 14.25,11A2.25,2.25 0 0,1 12,13.25A2.25,2.25 0 0,1 9.75,11A2.25,2.25 0 0,1 12,8.75M12,15C13.5,15 16.5,15.75 16.5,17.25V18H7.5V17.25C7.5,15.75 10.5,15 12,15Z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-zaans-blue mb-3">Familierecht</h3>
-                    <p class="text-gray-600">Begeleiding bij echtscheiding, alimentatie en omgangsregelingen.</p>
+                    <h3 class="text-xl font-semibold text-zaans-blue mb-3" data-i18n="family_law">Familierecht</h3>
+                    <p class="text-gray-600" data-i18n="family_law_description">Begeleiding bij echtscheiding, alimentatie en omgangsregelingen.</p>
                 </div>
                 <div class="text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
                     <div class="w-16 h-16 bg-zaans-blue rounded-full flex items-center justify-center mx-auto mb-4">
@@ -146,8 +174,8 @@
                             <path d="M10,2H14A2,2 0 0,1 16,4V6H20A2,2 0 0,1 22,8V19A2,2 0 0,1 20,21H4A2,2 0 0,1 2,19V8A2,2 0 0,1 4,6H8V4A2,2 0 0,1 10,2M14,6V4H10V6H14Z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-zaans-blue mb-3">Arbeidsrecht</h3>
-                    <p class="text-gray-600">Advies bij arbeidsconflicten, ontslagen en arbeidsovereenkomsten.</p>
+                    <h3 class="text-xl font-semibold text-zaans-blue mb-3" data-i18n="employment_law">Arbeidsrecht</h3>
+                    <p class="text-gray-600" data-i18n="employment_law_description">Advies bij arbeidsconflicten, ontslagen en arbeidsovereenkomsten.</p>
                 </div>
                 <div class="text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
                     <div class="w-16 h-16 bg-zaans-blue rounded-full flex items-center justify-center mx-auto mb-4">
@@ -155,8 +183,8 @@
                             <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11.5C14.8,12.6 13.9,13.5 12.8,13.5H11.2C10.1,13.5 9.2,12.6 9.2,11.5V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V11.3H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-zaans-blue mb-3">Bestuursrecht</h3>
-                    <p class="text-gray-600">Hulp bij geschillen met overheidsinstanties en bestuurlijke procedures.</p>
+                    <h3 class="text-xl font-semibold text-zaans-blue mb-3" data-i18n="administrative_law">Bestuursrecht</h3>
+                    <p class="text-gray-600" data-i18n="administrative_law_description">Hulp bij geschillen met overheidsinstanties en bestuurlijke procedures.</p>
                 </div>
                 <div class="text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
                     <div class="w-16 h-16 bg-zaans-blue rounded-full flex items-center justify-center mx-auto mb-4">
@@ -164,8 +192,8 @@
                             <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M9,13V19H7V13H9M12,10V19H10V10H12M15,16V19H13V16H15Z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-zaans-blue mb-3">Verbintenissenrecht</h3>
-                    <p class="text-gray-600">Contractrecht, aansprakelijkheid en andere verbintenissen tussen partijen.</p>
+                    <h3 class="text-xl font-semibold text-zaans-blue mb-3" data-i18n="obligations_law">Verbintenissenrecht</h3>
+                    <p class="text-gray-600" data-i18n="obligations_law_description">Contractrecht, aansprakelijkheid en andere verbintenissen tussen partijen.</p>
                 </div>
             </div>
         </div>
@@ -175,12 +203,12 @@
     <section id="contact" class="bg-gray-50 py-16">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-light text-zaans-blue mb-4">Contact</h2>
+                <h2 class="text-3xl font-light text-zaans-blue mb-4" data-i18n="contact_title">Contact</h2>
                 <div class="w-16 h-1 bg-zaans-blue mx-auto"></div>
             </div>
             <div class="grid md:grid-cols-2 gap-12">
                 <div>
-                    <h3 class="text-xl font-semibold text-zaans-blue mb-6">Neem contact op</h3>
+                    <h3 class="text-xl font-semibold text-zaans-blue mb-6" data-i18n="contact_heading">Neem contact op</h3>
                     <div class="space-y-6">
                         <div class="flex items-center">
                             <div class="w-12 h-12 bg-zaans-blue rounded-full flex items-center justify-center mr-4">
@@ -189,7 +217,7 @@
                                 </svg>
                             </div>
                             <div>
-                                <p class="font-semibold text-zaans-blue">E-mail</p>
+                                <p class="font-semibold text-zaans-blue" data-i18n="email">E-mail</p>
                                 <p class="text-gray-600">info@zaansrecht.nl</p>
                             </div>
                         </div>
@@ -200,7 +228,7 @@
                                 </svg>
                             </div>
                             <div>
-                                <p class="font-semibold text-zaans-blue">Telefoon</p>
+                                <p class="font-semibold text-zaans-blue" data-i18n="phone">Telefoon</p>
                                 <p class="text-gray-600">06-42750393</p>
                             </div>
                         </div>
@@ -211,47 +239,49 @@
                                 </svg>
                             </div>
                             <div>
-                                <p class="font-semibold text-zaans-blue">Locatie</p>
-                                <p class="text-gray-600">Zaandam, Noord-Holland</p>
+                                <p class="font-semibold text-zaans-blue" data-i18n="location">Locatie</p>
+                                <p class="text-gray-600" data-i18n="location_value">Zaandam, Noord-Holland</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="bg-white p-8 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold text-zaans-blue mb-6">Stuur een bericht</h3>
+                    <h3 class="text-xl font-semibold text-zaans-blue mb-6" data-i18n="send_message">Stuur een bericht</h3>
                     <form id="contactForm" class="space-y-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Naam *</label>
-                            <input type="text" name="full_name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Uw naam">
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="name_required">Naam *</label>
+                            <input type="text" name="full_name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Uw naam" data-i18n-placeholder="name_placeholder">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">E-mail *</label>
-                            <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="uw.email@voorbeeld.nl">
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="email_required">E-mail *</label>
+                            <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="uw.email@voorbeeld.nl" data-i18n-placeholder="email_placeholder">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Telefoon</label>
-                            <input type="tel" name="telephone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="06-12345678 (optioneel)">
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="phone_optional">Telefoon</label>
+                            <input type="tel" name="telephone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="06-12345678 (optioneel)" data-i18n-placeholder="phone_placeholder_optional">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Onderwerp *</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="subject_required">Onderwerp *</label>
                             <select name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent">
-                                <option value="">Selecteer een onderwerp</option>
-                                <option value="algemene-vraag">Algemene vraag</option>
-                                <option value="juridisch-advies">Juridisch advies</option>
-                                <option value="afspraak-maken">Afspraak maken</option>
-                                <option value="offerte-aanvragen">Offerte aanvragen</option>
-                                <option value="klacht">Klacht</option>
-                                <option value="overig">Overig</option>
+                                <option value="" data-i18n="select_subject">Selecteer een onderwerp</option>
+                                <option value="algemene-vraag" data-i18n="general_question">Algemene vraag</option>
+                                <option value="juridisch-advies" data-i18n="legal_advice">Juridisch advies</option>
+                                <option value="afspraak-maken" data-i18n="appointment_option">Afspraak maken</option>
+                                <option value="offerte-aanvragen" data-i18n="request_quote">Offerte aanvragen</option>
+                                <option value="klacht" data-i18n="complaint">Klacht</option>
+                                <option value="overig" data-i18n="other">Overig</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Bericht *</label>
-                            <textarea name="description" required rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Uw bericht..."></textarea>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="message_required">Bericht *</label>
+                            <textarea name="description" required rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Uw bericht..." data-i18n-placeholder="message_placeholder"></textarea>
                         </div>
                         <div class="flex items-start">
                             <input type="checkbox" name="terms_accepted" required class="mt-1 mr-3 text-zaans-blue">
                             <label class="text-sm text-gray-600">
-                                Ik ga akkoord met de <a href="#" class="text-zaans-blue hover:underline">privacyverklaring</a> en geef toestemming voor het verwerken van mijn gegevens. *
+                                <span data-i18n="privacy_prefix">Ik ga akkoord met de</span>
+                                <a href="#" class="text-zaans-blue hover:underline" data-i18n="privacy_link">privacyverklaring</a>
+                                <span data-i18n="privacy_suffix">en geef toestemming voor het verwerken van mijn gegevens. *</span>
                             </label>
                         </div>
                         <div
@@ -259,7 +289,7 @@
                             class="g-recaptcha"
                         ></div>
                         <button type="submit" class="w-full bg-zaans-blue text-white py-3 rounded-lg font-semibold hover:bg-blue-900 transition-colors">
-                            Verstuur bericht
+                            <span data-i18n="send_message_button">Verstuur bericht</span>
                         </button>
                     </form>
                     <div id="contactFormSuccess" class="hidden mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
@@ -267,7 +297,7 @@
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                             </svg>
-                            Bedankt! Uw bericht is verzonden. We nemen binnen 24 uur contact met u op.
+                            <span data-i18n="contact_success">Bedankt! Uw bericht is verzonden. We nemen binnen 24 uur contact met u op.</span>
                         </div>
                     </div>
                 </div>
@@ -280,8 +310,8 @@
         <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div class="p-6 border-b border-gray-200">
                 <div class="flex justify-between items-center">
-                    <h2 class="text-2xl font-semibold text-zaans-blue">Afspraak inplannen</h2>
-                    <button onclick="closeAppointmentModal()" class="text-gray-400 hover:text-gray-600">
+                    <h2 class="text-2xl font-semibold text-zaans-blue" data-i18n="appointment_title">Afspraak inplannen</h2>
+                    <button onclick="closeAppointmentModal()" class="text-gray-400 hover:text-gray-600" aria-label="Sluiten" data-i18n-aria-label="close_modal">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
@@ -292,45 +322,45 @@
                 <form id="appointmentForm" class="space-y-6">
                     <div class="grid md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Voornaam *</label>
-                            <input type="text" name="firstName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Uw voornaam">
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="first_name_required">Voornaam *</label>
+                            <input type="text" name="firstName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Uw voornaam" data-i18n-placeholder="first_name_placeholder">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Achternaam *</label>
-                            <input type="text" name="lastName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Uw achternaam">
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="last_name_required">Achternaam *</label>
+                            <input type="text" name="lastName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Uw achternaam" data-i18n-placeholder="last_name_placeholder">
                         </div>
                     </div>
                     <div class="grid md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">E-mail *</label>
-                            <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="uw.email@voorbeeld.nl">
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="email_required">E-mail *</label>
+                            <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="uw.email@voorbeeld.nl" data-i18n-placeholder="email_placeholder">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Telefoon *</label>
-                            <input type="tel" name="telephone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="06-12345678">
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="phone_required">Telefoon *</label>
+                            <input type="tel" name="telephone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="06-12345678" data-i18n-placeholder="phone_placeholder">
                         </div>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Rechtsgebied *</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="legal_area_required">Rechtsgebied *</label>
                         <select name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent">
-                            <option value="">Selecteer een rechtsgebied</option>
-                            <option value="ondernemingsrecht">Ondernemingsrecht</option>
-                            <option value="familierecht">Familierecht</option>
-                            <option value="arbeidsrecht">Arbeidsrecht</option>
-                            <option value="bestuursrecht">Bestuursrecht</option>
-                            <option value="verbintenissenrecht">Verbintenissenrecht</option>
-                            <option value="overig">Overig</option>
+                            <option value="" data-i18n="select_legal_area">Selecteer een rechtsgebied</option>
+                            <option value="ondernemingsrecht" data-i18n="corporate_law">Ondernemingsrecht</option>
+                            <option value="familierecht" data-i18n="family_law">Familierecht</option>
+                            <option value="arbeidsrecht" data-i18n="employment_law">Arbeidsrecht</option>
+                            <option value="bestuursrecht" data-i18n="administrative_law">Bestuursrecht</option>
+                            <option value="verbintenissenrecht" data-i18n="obligations_law">Verbintenissenrecht</option>
+                            <option value="overig" data-i18n="other">Overig</option>
                         </select>
                     </div>
                     <div class="grid md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Gewenste datum *</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="desired_date">Gewenste datum *</label>
                             <input type="date" name="desiredDate" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" min="">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Gewenste tijd *</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="desired_time">Gewenste tijd *</label>
                             <select name="desiredTime" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent">
-                                <option value="">Selecteer een tijd</option>
+                                <option value="" data-i18n="select_time">Selecteer een tijd</option>
                                 <option value="09:00">09:00</option>
                                 <option value="10:00">10:00</option>
                                 <option value="11:00">11:00</option>
@@ -342,32 +372,34 @@
                         </div>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Type afspraak *</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="meeting_type">Type afspraak *</label>
                         <div class="grid md:grid-cols-2 gap-4">
-                            <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                            <label class="appointment-choice flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
                                 <input type="radio" name="meeting_type" value="kantoor" required class="mr-3 text-zaans-blue">
                                 <div>
-                                    <div class="font-medium">Kantoorbezoek</div>
-                                    <div class="text-sm text-gray-600">Persoonlijk gesprek op kantoor</div>
+                                    <div class="font-medium" data-i18n="office_visit">Kantoorbezoek</div>
+                                    <div class="text-sm text-gray-600" data-i18n="office_visit_description">Persoonlijk gesprek op kantoor</div>
                                 </div>
                             </label>
-                            <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                            <label class="appointment-choice flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
                                 <input type="radio" name="meeting_type" value="videobellen" required class="mr-3 text-zaans-blue">
                                 <div>
-                                    <div class="font-medium">Videobellen</div>
-                                    <div class="text-sm text-gray-600">Online gesprek via video</div>
+                                    <div class="font-medium" data-i18n="video_call">Videobellen</div>
+                                    <div class="text-sm text-gray-600" data-i18n="video_call_description">Online gesprek via video</div>
                                 </div>
                             </label>
                         </div>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Korte omschrijving van uw vraag *</label>
-                        <textarea required rows="4" name="description" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Beschrijf kort waar u hulp bij nodig heeft..."></textarea>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="question_description">Korte omschrijving van uw vraag *</label>
+                        <textarea required rows="4" name="description" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zaans-blue focus:border-transparent" placeholder="Beschrijf kort waar u hulp bij nodig heeft..." data-i18n-placeholder="question_placeholder"></textarea>
                     </div>
                     <div class="flex items-start">
                         <input type="checkbox" name="terms_accepted" required class="mt-1 mr-3 text-zaans-blue">
                         <label class="text-sm text-gray-600">
-                            Ik ga akkoord met de <a href="#" class="text-zaans-blue hover:underline">privacyverklaring</a> en geef toestemming voor het verwerken van mijn gegevens. *
+                            <span data-i18n="privacy_prefix">Ik ga akkoord met de</span>
+                            <a href="#" class="text-zaans-blue hover:underline" data-i18n="privacy_link">privacyverklaring</a>
+                            <span data-i18n="privacy_suffix">en geef toestemming voor het verwerken van mijn gegevens. *</span>
                         </label>
                     </div>
                     <div
@@ -377,10 +409,10 @@
 
                     <div class="flex justify-end space-x-4">
                         <button type="button" onclick="closeAppointmentModal()" class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
-                            Annuleren
+                            <span data-i18n="cancel">Annuleren</span>
                         </button>
                         <button type="submit" class="px-6 py-3 bg-zaans-blue text-white rounded-lg hover:bg-blue-900 transition-colors">
-                            Afspraak aanvragen
+                            <span data-i18n="request_appointment">Afspraak aanvragen</span>
                         </button>
                     </div>
                 </form>
@@ -392,13 +424,34 @@
     <footer class="bg-zaans-blue text-white py-8">
         <div class="max-w-6xl mx-auto px-6 text-center">
             <div class="text-xl font-bold mb-2">Zaans Recht</div>
-            <p class="text-blue-200">Eerlijk juridisch advies. Zonder drempels.</p>
+            <p class="text-blue-200" data-i18n="footer_tagline">Eerlijk juridisch advies. Zonder drempels.</p>
             <div class="mt-4 text-sm text-blue-200">
-                © 2025 Zaans Recht. Alle rechten voorbehouden. | <a href="Algemene_voorwaarden.pdf" class="hover:text-white" target="_blank" rel="noopener noreferrer">Algemene Voorwaarden</a>
+                <span data-i18n="footer_copyright">© 2025 Zaans Recht. Alle rechten voorbehouden.</span>
+                | <a href="Algemene_voorwaarden.pdf" class="hover:text-white" target="_blank" rel="noopener noreferrer" data-i18n="terms">Algemene Voorwaarden</a>
             </div>
         </div>
     </footer>
 
+    <div
+        id="siteNotification"
+        class="site-notification notification-hidden"
+        data-type="info"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+    >
+        <div id="siteNotificationIcon" class="site-notification-icon" aria-hidden="true">i</div>
+        <p id="siteNotificationMessage" class="site-notification-message"></p>
+        <button
+            type="button"
+            class="site-notification-close"
+            onclick="hideNotification()"
+            aria-label="Melding sluiten"
+            data-i18n-aria-label="close_notification"
+        >&times;</button>
+    </div>
+
+    <script src="./js/notifications.js"></script>
     <script>
         // Set minimum date to today
         document.addEventListener('DOMContentLoaded', function() {
@@ -446,7 +499,7 @@
         const mobileMenuButton = document.querySelector('button.md\\:hidden');
         if (mobileMenuButton) {
             mobileMenuButton.addEventListener('click', function() {
-                alert('Mobiele menu functionaliteit - klik op de navigatie links bovenaan voor desktop versie');
+                window.showNotification(window.zaansrechtI18n.t('mobile_menu_message'), 'info');
             });
         }
 
@@ -473,6 +526,7 @@
 <!-- Google reCAPTCHA script -->
 
 <script src="./js/config.js"></script>
+<script src="./js/language.js"></script>
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadRecaptcha&render=explicit" async defer></script>
 <script src="./js/form-submit.js" type="module"></script>
 

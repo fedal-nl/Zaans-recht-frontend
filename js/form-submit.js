@@ -1,6 +1,7 @@
 import { API_URL } from './api.js';
 
 const RECAPTCHA_SITE_KEY = window.APP_CONFIG?.recaptchaSiteKey;
+const t = (key) => window.zaansrechtI18n?.t(key) ?? key;
 if (!RECAPTCHA_SITE_KEY) {
     throw new Error('RECAPTCHA_SITE_KEY is not configured');
 }
@@ -53,7 +54,7 @@ function handleFormSubmit(formElement, widgetId, onSuccess) {
         // console.log('CAPTCHA token response:', token);
 
         if (!token) {
-            alert('Bevestig a.u.b. dat u geen robot bent.');
+            window.showNotification(t('captcha_required'), 'error');
             return;
         }
 
@@ -87,7 +88,7 @@ function handleFormSubmit(formElement, widgetId, onSuccess) {
         const submitButton = formElement.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;
 
-        submitButton.textContent = 'Bezig met verzenden...';
+        submitButton.textContent = t('sending');
         submitButton.disabled = true;
 
         try {
@@ -105,7 +106,7 @@ function handleFormSubmit(formElement, widgetId, onSuccess) {
             grecaptcha.reset(widgetId);
         } catch (err) {
             console.error('Error submitting form:', err);
-            alert('Er ging iets mis bij het verzenden. Probeer het later opnieuw.');
+            window.showNotification(t('send_error'), 'error');
         } finally {
             submitButton.textContent = originalText;
             submitButton.disabled = false;
@@ -114,7 +115,7 @@ function handleFormSubmit(formElement, widgetId, onSuccess) {
 }
 
 function appointmentSuccess(form, submitButton, originalText) {
-    alert('Afspraak succesvol aangevraagd!');
+    window.showNotification(t('appointment_success'), 'success');
     form.reset();
 }
 
